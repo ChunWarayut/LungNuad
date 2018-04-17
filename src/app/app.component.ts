@@ -1,20 +1,16 @@
-import { MenuListAddPage } from './../pages/menu-list-add/menu-list-add';
-import { FoodListPage } from './../pages/food-list/food-list';
-import { MenuListPage } from './../pages/menu-list/menu-list';
-import { FoodDetailPage } from './../pages/food-detail/food-detail';
+
 import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { HomePage } from '../pages/home/home';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage:any = MenuListPage;
+  rootPage:string = 'MenuListPage';
 
   pages: Array<{title: string, component: any}>;
 
@@ -22,10 +18,12 @@ export class MyApp {
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     
     this.pages = [
-      { title: 'เลือกอาหาร', component: FoodListPage },
-      { title: 'อาหารที่สั่ง', component: FoodDetailPage },
-      { title: 'เมนูอาหาร', component: MenuListPage },
-      { title: 'เพิ่มเมนูอาหาร', component: MenuListAddPage }
+      { title: 'เลือกอาหาร', component: 'FoodListPage' },
+      { title: 'อาหารที่สั่ง', component: 'FoodDetailPage' },
+      { title: 'เมนูอาหาร', component: 'MenuListPage' },
+      { title: 'เพิ่มเมนูอาหาร', component: 'MenuListAddPage' },
+      { title: 'ประเภทอาหาร', component: 'MenuTypePage' },
+      { title: 'เพิ่มประเภทอาหาร', component: 'MenuTypeAddPage' }
     ];
 
     platform.ready().then(() => {

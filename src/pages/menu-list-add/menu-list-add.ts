@@ -5,7 +5,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, Item } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import firebase from 'firebase';
-import { MenuListPage } from '../menu-list/menu-list';
 
 /**
  * Generated class for the MenuListAddPage page.
@@ -37,7 +36,7 @@ export class MenuListAddPage {
   alertCtrl: AlertController;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private fooding:ServiceProvider, private toast:ToastServiceProvider, alertCtrl: AlertController, private camera: Camera) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private fooding:ServiceProvider, private toast:ToastServiceProvider, alertCtrl: AlertController, private camera: Camera) {
 
     this.alertCtrl = alertCtrl;
 
@@ -57,7 +56,7 @@ export class MenuListAddPage {
 
       this.toast.show(`${food.FOOD_NAME}  เพิ่มสำเร็จ`)
 
-      this.navCtrl.setRoot(MenuListPage, {key:ref.key});
+      this.navCtrl.setRoot('MenuListPage', {key:ref.key});
     });
 
     this.upload();

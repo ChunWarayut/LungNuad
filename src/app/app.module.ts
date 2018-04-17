@@ -1,6 +1,4 @@
-import { MenuListAddPage } from './../pages/menu-list-add/menu-list-add';
-import { FoodListPage } from './../pages/food-list/food-list';
-import { FoodDetailPage } from './../pages/food-detail/food-detail';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -8,7 +6,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
 import { ServiceProvider } from '../providers/service/service';
 import { ToastServiceProvider } from '../providers/toast-service/toast-service';
 import { MenuListPage } from '../pages/menu-list/menu-list';
@@ -28,11 +25,7 @@ const config = {
 
 @NgModule({
   declarations: [
-    MyApp,
-    HomePage,
-    MenuListPage,
-    FoodListPage,
-    FoodDetailPage
+    MyApp
   ],
   imports: [
     BrowserModule,
@@ -42,11 +35,7 @@ const config = {
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    HomePage,
-    MenuListPage,
-    FoodListPage,
-    FoodDetailPage
+    MyApp
   ],
   providers: [
     StatusBar,

@@ -1,0 +1,38 @@
+<!--
+  Generated template for the MenuTypePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>menuType</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <!-- Refresh -->
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content
+          pullingIcon="arrow-dropdown"
+          pullingText="Pull to refresh"
+          refreshingSpinner="circles">
+        </ion-refresher-content>
+        <!-- refreshingText="Refreshing...">
+        </ion-refresher-content>-->
+      </ion-refresher>
+      <!--  -->
+      <ion-card color="Beige" *ngFor="let type of TypeList$ | async" detail-push navPush="MenuListEditPage" [navParams]="{item: item}"> 
+        <p align="center">
+            {{type.FOOD_TYPE_ID}}
+        </p>
+        <p align="center">
+            {{type.FOOD_TYPE_NAME}}
+        </p>
+      </ion-card>    
+
+
+</ion-content>
