@@ -1,12 +1,11 @@
-export interface Item {
+export interface Food {
   key?:string;
 
-  FOOD_ID?: string;
+  FOOD_ID: number;
   FOOD_NAME: string;
   FOOD_PRICE: number;
-  FOOD_IMG : string;
+  FOOD_IMG : number;
   FOOD_TYPE_NAME: string;
-  TEST_TEST_ID: number;
 
 }
 export interface Type {

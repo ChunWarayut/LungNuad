@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="LtGoldenrodYello">
     <ion-title>menu-list-add</ion-title>
   </ion-navbar>
 
@@ -14,5 +14,33 @@
 
 
 <ion-content padding>
+
+  <ion-item>
+    <ion-label>ชื่ออาหาร</ion-label> 
+    <ion-input [(ngModel)]="food.FOOD_NAME"></ion-input>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label>ประเภทอาหาร</ion-label> 
+    <ion-input [(ngModel)]="food.FOOD_TYPE_NAME"></ion-input>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label>ราคา</ion-label>
+    <ion-input [(ngModel)]="food.FOOD_PRICE"></ion-input>
+  </ion-item>
+  <!--
+  <ion-item>
+    <ion-label>ชื่อรูปภาพ</ion-label>
+    <ion-input [(ngModel)]="item.FOOD_IMG"></ion-input>
+  </ion-item>
+  -->
+  <div style="display:flex; flex-direction:column;justify-content:center">
+      <button ion-button color="secondary" type="button" full round large (click)="selectPhoto()">
+        <ion-icon name="md-image"></ion-icon>
+      </button>
+      <img [src]="captureDataUrl"  *ngIf="captureDataUrl"/>
+      <button ion-button block full round large (click)=addFoodItem(food)>Add</button>
+    </div>
 
 </ion-content>
