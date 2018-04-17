@@ -38,7 +38,12 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  boa:        #B0A990,
+  LtGoldenrodYello: #FAFAD2,
+  PaleGoldenrod: #EEE8AA,
+  Beige:#F5F5DC,
+  bg:#EDEDED
 );
 
 
@@ -86,3 +91,21 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+
+// Font From Google
+@import url('https://fonts.googleapis.com/css?family=Athiti|Itim|Kanit|Mitr|Pridi|Sriracha');
+*{
+  font-family: 'Kanit', sans-serif;
+  font-family: 'Itim', cursive;
+  font-family: 'Pridi', serif;
+  font-family: 'Mitr', sans-serif;
+  font-family: 'Athiti', sans-serif;
+  font-family: 'Sriracha', cursive;
+}
+
+* {
+  .scroll-content {
+      background: #EDEDED;
+      
+    }
+}
