@@ -38,6 +38,11 @@
         <ion-col col-6   *ngFor="let food of FoodList$ | async" detail-push navPush="MenuListEditPage" [navParams]="{item: item}">
     <ion-card color="Beige"> 
       <img  src="https://firebasestorage.googleapis.com/v0/b/lungnuad-a547e.appspot.com/o/images%2F{{food.FOOD_IMG}}.jpg?alt=media&token=75d07bf1-e764-4048-a77c-be661f278014">
+      
+      <p align="center">
+          {{food.FOOD_ID}}
+      </p>
+
       <p align="center">
           {{food.FOOD_NAME}}
       </p>

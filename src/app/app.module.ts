@@ -8,7 +8,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { ServiceProvider } from '../providers/service/service';
 import { ToastServiceProvider } from '../providers/toast-service/toast-service';
-import { MenuListPage } from '../pages/menu-list/menu-list';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
