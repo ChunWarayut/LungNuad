@@ -17,6 +17,7 @@ import { ServiceProvider } from '../../providers/service/service';
   templateUrl: 'menu-type.html',
 })
 export class MenuTypePage {
+
   TypeList$:Observable<Type[]>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private typeing: ServiceProvider) {
@@ -55,7 +56,7 @@ export class MenuTypePage {
     setTimeout(() => {
       console.log('Async operation has ended');
       refresher.complete();
-    }, 5000);   
+    }, 9000);   
      
   }
 

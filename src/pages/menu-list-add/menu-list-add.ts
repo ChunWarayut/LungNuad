@@ -1,10 +1,11 @@
 import { ToastServiceProvider } from './../../providers/toast-service/toast-service';
 import { ServiceProvider } from './../../providers/service/service';
-import { Food } from './../../module/item/item.module';
+import { Food, Type } from './../../module/item/item.module';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, Item } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import firebase from 'firebase';
+import { Observable } from 'rxjs/Observable';
 
 /**
  * Generated class for the MenuListAddPage page.
@@ -30,15 +31,37 @@ export class MenuListAddPage {
     FOOD_TYPE_NAME:undefined
 
   };
+
+  type: Type = {
+
+    FOOD_TYPE_ID  : undefined,
+    FOOD_TYPE_NAME  : undefined
+
+  };
+  
   
 
   captureDataUrl: string;
   alertCtrl: AlertController;
 
+  TypeList$:Observable<Type[]>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private fooding:ServiceProvider, private toast:ToastServiceProvider, alertCtrl: AlertController, private camera: Camera) {
+  
+  constructor(public navCtrl: NavController, public navParams: NavParams, private fooding:ServiceProvider, private toast:ToastServiceProvider, alertCtrl: AlertController, private camera: Camera,private typeing: ServiceProvider) {
 
     this.alertCtrl = alertCtrl;
+
+    this.TypeList$ = this.typeing
+    .getTypeList()
+    .snapshotChanges()
+    .map(
+      Change => {
+        return Change.map(c=> ({
+          key : c.payload.key,
+          ...c.payload.val(),
+        }));
+      });
+
 
   }
 
@@ -48,10 +71,10 @@ export class MenuListAddPage {
 
   addFoodItem(food:Food){
 
-    this.food.FOOD_ID = Math.floor(Date.now() / 100);
-
+    food.FOOD_ID = 'F_' + Math.floor(Date.now() / 100);
     food.FOOD_IMG = this.food.FOOD_ID;
 
+    food.FOOD_TYPE_NAME = this.type.FOOD_TYPE_NAME;
     this.fooding.addFoodItem(food).then(ref =>{
 
       this.toast.show(`${food.FOOD_NAME}  เพิ่มสำเร็จ`)

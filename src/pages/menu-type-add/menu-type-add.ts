@@ -34,7 +34,7 @@ export class MenuTypeAddPage {
 
   addTypeItem(type:Type){
 
-    this.type.FOOD_TYPE_ID = Math.floor(Date.now() / 100);
+    this.type.FOOD_TYPE_ID = "T_" + Math.floor(Date.now() / 100);
 
     this.typeing.addTypeItem(type).then(ref =>{
 

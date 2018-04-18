@@ -6,8 +6,8 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>menuType</ion-title>
+  <ion-navbar color="boa">
+    <ion-title>ประเภทอาหาร</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -26,12 +26,17 @@
       </ion-refresher>
       <!--  -->
       <ion-card color="Beige" *ngFor="let type of TypeList$ | async" detail-push navPush="MenuListEditPage" [navParams]="{item: item}"> 
-        <p align="center">
-            {{type.FOOD_TYPE_ID}}
-        </p>
-        <p align="center">
-            {{type.FOOD_TYPE_NAME}}
-        </p>
+        
+        <ion-item>
+          <ion-label>รหัสประเภทอาหาร</ion-label> 
+          <ion-label> {{type.FOOD_TYPE_ID}} </ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>ชื่อประเภทอาหาร</ion-label> 
+          <ion-label> {{type.FOOD_TYPE_NAME}} </ion-label>
+        </ion-item>
+
       </ion-card>    
 
 

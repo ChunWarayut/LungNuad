@@ -56,7 +56,7 @@ export class MenuListPage {
     setTimeout(() => {
       console.log('Async operation has ended');
       refresher.complete();
-    }, 5000);   
+    }, 9000);   
      
   }
 

@@ -6,8 +6,8 @@
 -->
 <ion-header>
 
-  <ion-navbar color="LtGoldenrodYello">
-    <ion-title>menu-list-add</ion-title>
+    <ion-navbar color="boa">
+        <ion-title>menu-list-add</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,13 +16,20 @@
 <ion-content padding>
 
   <ion-item>
+    <ion-label>รหัสอาหาร</ion-label> 
+    <ion-input [(ngModel)]="food.FOOD_ID"></ion-input>
+  </ion-item>
+
+  <ion-item>
     <ion-label>ชื่ออาหาร</ion-label> 
     <ion-input [(ngModel)]="food.FOOD_NAME"></ion-input>
   </ion-item>
   
   <ion-item>
     <ion-label>ประเภทอาหาร</ion-label> 
-    <ion-input [(ngModel)]="food.FOOD_TYPE_NAME"></ion-input>
+    <ion-select [(ngModel)]="type.FOOD_TYPE_NAME">
+      <ion-option *ngFor="let type of TypeList$ | async" [value]="type.FOOD_TYPE_NAME">{{type.FOOD_TYPE_NAME}}</ion-option>
+    </ion-select>
   </ion-item>
   
   <ion-item>
@@ -40,7 +47,7 @@
         <ion-icon name="md-image"></ion-icon>
       </button>
       <img [src]="captureDataUrl"  *ngIf="captureDataUrl"/>
-      <button ion-button block full round large (click)=addFoodItem(food)>Add</button>
+      <button ion-button block full round large (click)=addFoodItem(food) *ngIf="captureDataUrl">Add</button>
     </div>
 
 </ion-content>

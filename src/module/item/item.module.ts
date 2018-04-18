@@ -1,10 +1,10 @@
 export interface Food {
   key?:string;
 
-  FOOD_ID: number;
+  FOOD_ID: string;
   FOOD_NAME: string;
   FOOD_PRICE: number;
-  FOOD_IMG : number;
+  FOOD_IMG : string;
   FOOD_TYPE_NAME: string;
 
 }
@@ -12,7 +12,7 @@ export interface Type {
 
   key?:string;
 
-  FOOD_TYPE_ID: number;
+  FOOD_TYPE_ID: string;
   FOOD_TYPE_NAME: string;
 
 }
@@ -34,6 +34,7 @@ export interface Detail {
 export interface Buyer {
 
   key?:string;
+  
   BUYER_ID:string;
   BUYER_NAME:string;
   BUYER_PASSWORD:string;
