@@ -13,6 +13,42 @@
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content >
+    <!-- Refresh -->
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content
+        pullingIcon="arrow-dropdown"
+        pullingText="Pull to refresh"
+        refreshingSpinner="circles">
+      </ion-refresher-content>
+       <!-- refreshingText="Refreshing...">
+      </ion-refresher-content>-->
+    </ion-refresher>
+    <!--  -->
+    <ion-grid>
+     <ion-row>
+         <ion-col col-6   *ngFor="let food of FoodList$ | async" detail-push navPush="FoodDetailPage" [navParams]="{food: food}">
+    <ion-card color="Beige"> 
+      <img  src="https://firebasestorage.googleapis.com/v0/b/lungnuad-a547e.appspot.com/o/images%2F{{food.FOOD_IMG}}.jpg?alt=media&token=b934ec8f-234a-47cf-9d6a-4b5376fdb8d8">
+      <p align="center">
+          {{food.FOOD_NAME}}      
+      </p>
+      <p align="center">
+        ราคา : {{food.FOOD_PRICE}}
+      </p>
+      <ion-label hidden>           
+          ประเภทอาหาร : {{food.FOOD_TYPE_NAME}}          
+      </ion-label>
+    </ion-card>    
+  </ion-col>
+</ion-row>
+</ion-grid>
+<!--
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+-->
 </ion-content>

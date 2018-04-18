@@ -22,6 +22,8 @@ export interface Detail {
   key?:string;
 
   DETAIL_ID:string;
+  FOOD_NAME: string;
+  
   DETAIL_AMOUT:string;
   DETAIL_PRICE:string;
   DETAIL_DATE:string;
