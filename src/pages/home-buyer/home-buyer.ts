@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the SigninBuyerPage page.
+ * Generated class for the HomeBuyerPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,21 +10,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-signin-buyer',
-  templateUrl: 'signin-buyer.html',
+  selector: 'page-home-buyer',
+  templateUrl: 'home-buyer.html',
 })
-export class SigninBuyerPage {
+export class HomeBuyerPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad SigninBuyerPage');
-  }
-
-  signup(){
-    //Api connections
-    this.navCtrl.push('FoodListPage');
+    console.log('ionViewDidLoad HomeBuyerPage');
   }
 
 }

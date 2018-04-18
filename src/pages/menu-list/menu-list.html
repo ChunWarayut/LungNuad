@@ -32,25 +32,70 @@
       <!-- refreshingText="Refreshing...">
       </ion-refresher-content>-->
     </ion-refresher>
-    <!--  -->
+    <!--  
     <ion-grid>
     <ion-row>
-        <ion-col col-6   *ngFor="let food of FoodList$ | async" detail-push navPush="MenuListEditPage" [navParams]="{item: item}">
-    <ion-card color="Beige"> 
-      <img  src="https://firebasestorage.googleapis.com/v0/b/lungnuad-a547e.appspot.com/o/images%2F{{food.FOOD_IMG}}.jpg?alt=media&token=75d07bf1-e764-4048-a77c-be661f278014">
+    
       
-      <p align="center">
-          {{food.FOOD_ID}}
-      </p>
+        <ion-col col-6   *ngFor="let food of FoodList$ | async" detail-push navPush="MenuListEditPage" [navParams]="{item: item}">
+    -->
+    <ion-grid>
+        <ion-row>
+          <ion-col align="center" col-6 *ngFor="let food of FoodList$ | async" detail-push navPush="MenuListEditPage" [navParams]="{item: item}">
 
-      <p align="center">
-          {{food.FOOD_NAME}}
-      </p>
-      <p align="center">
-        ราคา : {{food.FOOD_PRICE}}
-      </p>
-    </ion-card>    
+    <ion-card > 
+<!--
+      <img height="100" width="100" src="https://firebasestorage.googleapis.com/v0/b/lungnuad-a547e.appspot.com/o/images%2F{{food.FOOD_IMG}}.jpg?alt=media&token=b934ec8f-234a-47cf-9d6a-4b5376fdb8d8">
+-->
+<!--
+
+  <ion-grid>
+        <ion-row>
+          <ion-col>
+            <h1></h1>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+
+-->
+    
+    
+      
+      <ion-item>
+          <ion-label align="center">
+              <img width="400" height="100" src="https://firebasestorage.googleapis.com/v0/b/lungnuad-a547e.appspot.com/o/images%2F{{food.FOOD_IMG}}.jpg?alt=media&token=b934ec8f-234a-47cf-9d6a-4b5376fdb8d8">
+            </ion-label> 
+          </ion-item>      
+
+        <ion-label> 
+          ชื่อ : {{food.FOOD_NAME}}
+        </ion-label>
+
+      
+          
+          <ion-label> 
+           ราคา : {{food.FOOD_PRICE}}
+          </ion-label>
+
+          <ion-label>           
+              ประเภทอาหาร : {{food.FOOD_TYPE_NAME}}          
+             </ion-label>
+
+          <ion-label>           
+              รหัส : {{food.FOOD_ID}}          
+             </ion-label>
+
+    </ion-card>   
+
+  </ion-col>
+</ion-row>
+</ion-grid>
+
+
+    <!-- 
   </ion-col>
   </ion-row>
   </ion-grid>
+-->
 </ion-content>

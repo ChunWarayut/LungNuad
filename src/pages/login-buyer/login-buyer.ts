@@ -22,4 +22,8 @@ export class LoginBuyerPage {
     console.log('ionViewDidLoad LoginBuyerPage');
   }
 
+  login(){
+    //Api connections
+    this.navCtrl.push('FoodListPage');
+  }
 }

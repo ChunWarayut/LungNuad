@@ -22,4 +22,16 @@ export class HomePage {
     console.log('ionViewDidLoad HomePage');
   }
 
+  login(){
+    this.navCtrl.push('LoginBuyerPage');
+  }
+
+  loginAdmin(){
+    this.navCtrl.push('LoginAdminPage');
+  }
+  
+  signup(){
+  this.navCtrl.push('SigninBuyerPage');
+  }
+
 }

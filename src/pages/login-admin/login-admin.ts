@@ -22,4 +22,8 @@ export class LoginAdminPage {
     console.log('ionViewDidLoad LoginAdminPage');
   }
 
+  login(){
+    //Api connections
+    this.navCtrl.push('HomeAdminPage');
+  }
 }

@@ -11,7 +11,7 @@ export class MyApp {
  /*
   @ViewChild(Nav) nav: Nav;
 */
-  rootPage:string = 'HomeAdminPage';
+  rootPage:string = 'HomePage';
 /*
   pages: Array<{title: string, component: any}>;
 */

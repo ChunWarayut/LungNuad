@@ -4,7 +4,7 @@ export interface Food {
   FOOD_ID: string;
   FOOD_NAME: string;
   FOOD_PRICE: number;
-  FOOD_IMG : string;
+  FOOD_IMG : any;
   FOOD_TYPE_NAME: string;
 
 }

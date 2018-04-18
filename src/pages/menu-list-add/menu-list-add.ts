@@ -71,6 +71,7 @@ export class MenuListAddPage {
 
   addFoodItem(food:Food){
 
+
     food.FOOD_ID = 'F_' + Math.floor(Date.now() / 100);
     food.FOOD_IMG = this.food.FOOD_ID;
 
@@ -83,6 +84,7 @@ export class MenuListAddPage {
     });
 
     this.upload();
+
 
   }
 
@@ -106,7 +108,7 @@ export class MenuListAddPage {
   upload() {
     let storageRef = firebase.storage().ref();
 
-    const filename = Math.floor(Date.now() / 100);
+    const filename = this.food.FOOD_IMG;
 
     // Create a reference to 'images/todays-date.jpg'
     const imageRef = storageRef.child(`images/${filename}.jpg`);

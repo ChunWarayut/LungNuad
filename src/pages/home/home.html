@@ -12,12 +12,46 @@
           <ion-icon name="menu"></ion-icon>
         </button>
 
-    <ion-title>home</ion-title>
+    <ion-title>ราดแกงลุงหนวด</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding align="center">
+
+  <p> </p>
+    <h1>Welcome to LungNuadFoods </h1>
+    <br/>
+
+    <img src="assets/imgs/001.jpg" />
+
+    <ion-grid>
+        <ion-row>
+          <ion-col>
+            <h1></h1>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    
+      <ion-grid >
+        <ion-row>
+          <ion-col center text-center>
+            <button ion-button full color="energy" (click)="signup()">Sign up</button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col center text-center>
+            <button ion-button full color="primary" (click)="login()">Log in</button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col center text-center>
+                <br/>
+
+              <button ion-button full color="danger" (click)="loginAdmin()">เฉพาะผู้ดูแล</button>
+            </ion-col>
+          </ion-row>
+      </ion-grid>
 
 </ion-content>
