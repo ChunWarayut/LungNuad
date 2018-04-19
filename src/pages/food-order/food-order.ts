@@ -38,6 +38,7 @@ export class FoodOrderPage {
       });
 
 
+      
 
   }
 
@@ -47,5 +48,5 @@ export class FoodOrderPage {
   GoBack(){
     this.navCtrl.setRoot('FoodStatusPage');
   }
-  
+
 }

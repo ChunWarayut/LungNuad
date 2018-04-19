@@ -40,7 +40,7 @@ export class MenuTypeAddPage {
 
       this.toast.show(`${type.FOOD_TYPE_NAME}  เพิ่มสำเร็จ`)
 
-      this.navCtrl.setRoot('MenuTypePage', {key:ref.key});
+      this.navCtrl.setRoot('HomeAdminPage', {key:ref.key});
     });
   }
   

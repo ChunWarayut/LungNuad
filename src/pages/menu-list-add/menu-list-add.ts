@@ -80,7 +80,7 @@ export class MenuListAddPage {
 
       this.toast.show(`${food.FOOD_NAME}  เพิ่มสำเร็จ`)
 
-      this.navCtrl.setRoot('MenuListPage', {key:ref.key});
+      this.navCtrl.setRoot('HomeAdminPage', {key:ref.key});
     });
 
     this.upload();
