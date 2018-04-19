@@ -1,0 +1,132 @@
+<!--
+  Generated template for the OrderListDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>orderListDetail</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-grid>
+        <ion-row>
+          <ion-col *ngFor="let detail of DetailList$ | async">
+  
+          <ion-list> 
+            
+            <ion-item>
+      
+            <ion-label fixed> 
+              รหัสสั่งซื้อ :
+            </ion-label>
+  
+            <ion-label > 
+              {{detail.DETAIL_ID}}
+            </ion-label>
+  
+            </ion-item>
+  
+            <ion-item>
+            
+            <ion-label fixed> 
+              ชื่ออาหาร :
+            </ion-label>
+  
+            <ion-label > 
+              {{detail.FOOD_NAME}}
+            </ion-label>
+  
+            </ion-item>
+  
+  
+            <ion-item>
+  
+            <ion-label fixed>           
+              ชื่อลูกค้า :         
+            </ion-label>
+  
+            <ion-label>           
+              {{detail.BUYER_NAME}}          
+            </ion-label>
+  
+            </ion-item>
+  
+            <ion-item>
+  
+            <ion-label fixed>           
+              จำนวน :       
+            </ion-label>  
+  
+            <ion-label>           
+               {{detail.DETAIL_AMOUT}}          
+            </ion-label>  
+  
+            </ion-item>
+  
+            <ion-item>
+  
+            <ion-label fixed> 
+              ราคา : 
+            </ion-label>
+    
+            <ion-label> 
+               {{detail.DETAIL_PRICE}}
+              </ion-label>
+      
+            </ion-item>
+  
+              <ion-item>
+  
+  
+            <ion-label fixed> 
+              วันที่ : 
+            </ion-label>
+  
+            <ion-label text-wrap> 
+                {{detail.DETAIL_DATE}}
+              </ion-label>
+    
+            </ion-item>
+  
+              <ion-item>
+  
+  
+            <ion-label fixed>           
+              ที่อยู่ :          
+            </ion-label>
+  
+            <ion-label text-wrap>           
+              {{detail.DETAIL_ADDRESS}}          
+              </ion-label>
+  
+            </ion-item>
+  
+              <ion-item>
+  
+  
+            <ion-label fixed>           
+              สถานะ :        
+            </ion-label>
+  
+            <ion-label>           
+               {{detail.DETAIL_STATUS}}          
+              </ion-label>
+    
+            </ion-item>
+  
+  
+          </ion-list>
+  
+        </ion-col>
+       
+  
+      </ion-row>
+    </ion-grid>
+</ion-content>

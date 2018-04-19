@@ -15,7 +15,7 @@
 
 <ion-content>
 
-    <ion-card *ngFor="let detail of DetailList$ | async">
+    <ion-card *ngFor="let detail of DetailList$ | async" detail-push navPush="OrderListDetailPage" [navParams]="{food: food}">
       <ion-grid>
         <ion-row>
           <ion-col col-8>

@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+
 import { Detail } from './../../module/item/item.module';
 import { Observable } from 'rxjs/Observable';
 import { ServiceProvider } from '../../providers/service/service';
-
 /**
- * Generated class for the FoodOrderPage page.
+ * Generated class for the OrderListDetailPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -13,10 +13,10 @@ import { ServiceProvider } from '../../providers/service/service';
 
 @IonicPage()
 @Component({
-  selector: 'page-food-order',
-  templateUrl: 'food-order.html',
+  selector: 'page-order-list-detail',
+  templateUrl: 'order-list-detail.html',
 })
-export class FoodOrderPage {
+export class OrderListDetailPage {
 
   DetailList$:Observable<Detail[]>;
 
