@@ -13,6 +13,22 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
 
+  <ion-card *ngFor="let detail of DetailList$ | async">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-8>
+          <ion-label > 
+            รหัสสั่งซื้อ : {{detail.DETAIL_ID}}
+          </ion-label>
+        </ion-col>
+        <ion-col col-4>
+          <ion-label > 
+              {{detail.DETAIL_STATUS}} 
+          </ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
 </ion-content>

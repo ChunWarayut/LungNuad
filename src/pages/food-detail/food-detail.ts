@@ -51,8 +51,8 @@ export class FoodDetailPage {
     this.detail.FOOD_NAME = this.food.FOOD_NAME;
     this.detail.DETAIL_PRICE = this.food.FOOD_PRICE * this.detail.DETAIL_AMOUT;
     detail.DETAIL_DATE = new Date().toISOString();
-    detail.BUYER_NAME = 'NoName';
-    detail.DETAIL_ADDRESS = 'NoAddress';
+    detail.BUYER_NAME = 'สมชาย ใจดี';
+    detail.DETAIL_ADDRESS = '25/1 ต.เมืองพล อ.พล จ.ขอนแก่น';
     detail.DETAIL_STATUS = 'รอดำเนินการ';
 
 

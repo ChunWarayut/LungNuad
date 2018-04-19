@@ -70,7 +70,7 @@ export class MenuListEditPage {
 
 
   save(food){
-    
+
     food.FOOD_TYPE_NAME = this.type.FOOD_TYPE_NAME;
 
     this.fooding.editFoodItem(food).then(() =>{

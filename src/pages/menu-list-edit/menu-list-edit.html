@@ -14,29 +14,25 @@
 
 <ion-content padding>
     <ion-card color="primary"> 
-      <ion-item color="Beige">
+      <ion-item>
           <img  src="https://firebasestorage.googleapis.com/v0/b/lungnuad-a547e.appspot.com/o/images%2F{{food?.FOOD_IMG}}.jpg?alt=media&token=b934ec8f-234a-47cf-9d6a-4b5376fdb8d8">
       </ion-item>
-
       <ion-item color="Beige">
-        <ion-label>ชื่ออาหาร</ion-label>
+        <ion-label>เมนู</ion-label>
         <ion-input [(ngModel)]="food.FOOD_NAME"></ion-input>
-
-        <ion-item color="Beige">
-            <ion-label>ประเภทอาหาร</ion-label> 
-            <ion-select [(ngModel)]="type.FOOD_TYPE_NAME">
-              <ion-option *ngFor="let type of TypeList$ | async" [value]="type.FOOD_TYPE_NAME">{{type.FOOD_TYPE_NAME}}</ion-option>
-            </ion-select>
-          </ion-item>
-          
       </ion-item>
+
+      <ion-item>
+          <ion-label>ประเภทอาหาร</ion-label> 
+          <ion-select [(ngModel)]="type.FOOD_TYPE_NAME">
+            <ion-option *ngFor="let type of TypeList$ | async" [value]="type.FOOD_TYPE_NAME">{{type.FOOD_TYPE_NAME}}</ion-option>
+          </ion-select>
+        </ion-item>
+
       <ion-item color="Beige">
         <ion-label>ราคา</ion-label>
         <ion-input [(ngModel)]="food.FOOD_PRICE"></ion-input>
       </ion-item>
-
-      <button ion-button block full round large (click)=save(food) >ยืนยันการแก้ไข</button>
-      <button ion-button block full round large (click)=removeItem(food) >ลบ</button>
 
 
       <!--
@@ -52,13 +48,30 @@
           -->
       </ion-card>
 
+      
+      <button ion-button block full round large (click)=save(food) >ยืนยันการแก้ไข</button>
+      <button ion-button block full round large (click)=removeItem(food) >ลบ</button>
+
+
+      <!--
+
+
+      <ion-item color="energy">
+        <ion-label>จำนวน</ion-label>
+      <ion-input [(ngModel)]="detail.DETAIL_AMOUT"></ion-input>
+      </ion-item>
+      
+      <button ion-button block (click)=" addDetailItem(detail)">สั่งเมนูนี้</button>
+
+          -->
+
 
     <div style="display:flex; flex-direction:column;justify-content:center">
       <button ion-button color="secondary" type="button" full round large (click)="selectPhoto()">
         <ion-icon name="md-image"></ion-icon>
       </button>
       <img [src]="captureDataUrl"  *ngIf="captureDataUrl"/>
-      <button ion-button block full round large (click)=saveDataImg(food) *ngIf="captureDataUrl">Add</button>
+      <button ion-button block full round large (click)=saveDataImg(food) *ngIf="captureDataUrl">เพิ่มรูปพร้อมยืนยันการแก้ไข</button>
     </div>
 
 

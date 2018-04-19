@@ -45,6 +45,7 @@ export class FoodOrderPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad FoodOrderPage');
   }
+  
   GoBack(){
     this.navCtrl.setRoot('FoodStatusPage');
   }
