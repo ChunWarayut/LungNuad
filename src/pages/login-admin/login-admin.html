@@ -6,15 +6,62 @@
 -->
 <ion-header>
 
-    <ion-navbar color="boa">
+
+  <ion-navbar color="boa">
         <ion-title>loginAdmin</ion-title>
   </ion-navbar>
+
+
+    
 
 </ion-header>
 
 
 <ion-content padding>
-  <ion-list>
+  <ion-grid>
+    <ion-row align-items-start>
+
+      <ion-col>
+
+
+
+
+      </ion-col>
+
+    </ion-row>
+    <ion-row align-items-center>
+
+      <ion-col >
+        <ion-list>
+
+          <ion-item>
+            <ion-label fixed>Username</ion-label>
+            <ion-input type="text" value=""></ion-input>
+          </ion-item>
+        
+          <ion-item>
+            <ion-label fixed>Password</ion-label>
+            <ion-input type="password"></ion-input>
+          </ion-item>
+        
+          <button ion-button block color="primary" (click)="login()">Login</button>
+        
+        </ion-list>
+      </ion-col>
+
+    </ion-row>
+    <ion-row align-items-end>
+
+      <ion-col>
+
+      </ion-col>
+      
+    </ion-row>
+  </ion-grid>
+  <!--
+
+
+     <ion-list>
 
     <ion-item>
       <ion-label fixed>Username</ion-label>
@@ -29,4 +76,9 @@
     <button ion-button block color="primary" (click)="login()">Login</button>
   
   </ion-list>
+  
+  -->
+ 
+
+
 </ion-content>

@@ -24,6 +24,10 @@
     <ion-item color="Beige">
       <ion-label>ราคา {{food?.FOOD_PRICE}}</ion-label>
     </ion-item>
+    <ion-item color="energy">
+      <ion-label>จำนวน</ion-label>
+    <ion-input [(ngModel)]="detail.DETAIL_AMOUT"></ion-input>
+    </ion-item>
     <button ion-button block (click)=" addDetailItem(detail)">สั่งเมนูนี้</button>
     </ion-card>
 

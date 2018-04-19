@@ -20,16 +20,16 @@ export class FoodDetailPage {
   
   food:Food
   
-  detail:Detail= {
+  detail:Detail = {
 
     DETAIL_ID : undefined,
-  FOOD_NAME : undefined,
-  
-  DETAIL_AMOUT : undefined,
-  DETAIL_PRICE : undefined,
-  DETAIL_DATE : undefined,
-  DETAIL_ADDRESS : undefined,
-  DETAIL_STATUS : undefined
+    FOOD_NAME : undefined,
+    BUYER_NAME : undefined,
+    DETAIL_AMOUT : 1,
+    DETAIL_PRICE : undefined,
+    DETAIL_DATE : undefined,
+    DETAIL_ADDRESS : undefined,
+    DETAIL_STATUS : undefined
 
   }
 
@@ -47,9 +47,18 @@ export class FoodDetailPage {
   addDetailItem(detail:Detail){
 
     this.detail.DETAIL_ID = 'D_' +  Math.floor(Date.now() / 100);
+
+    this.detail.FOOD_NAME = this.food.FOOD_NAME;
+    this.detail.DETAIL_PRICE = this.food.FOOD_PRICE * this.detail.DETAIL_AMOUT;
+    detail.DETAIL_DATE = new Date().toISOString();
+    detail.BUYER_NAME = 'NoName';
+    detail.DETAIL_ADDRESS = 'NoAddress';
+    detail.DETAIL_STATUS = 'รอดำเนินการ';
+
+
     this.detailing.addDetailItem(detail).then(ref =>{
       this.toast.show(`${detail.FOOD_NAME} สั่งอาหารสำเร็จ`)
-      this.navCtrl.setRoot('FoodListPage',  {key:ref.key});
+      this.navCtrl.setRoot('FoodOrderPage',  {key:ref.key});
     });
   }
 }

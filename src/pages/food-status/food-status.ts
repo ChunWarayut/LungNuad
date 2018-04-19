@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the ReportBuyerPage page.
+ * Generated class for the FoodStatusPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,16 +10,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-report-buyer',
-  templateUrl: 'report-buyer.html',
+  selector: 'page-food-status',
+  templateUrl: 'food-status.html',
 })
-export class ReportBuyerPage {
+export class FoodStatusPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ReportBuyerPage');
+    console.log('ionViewDidLoad FoodStatusPage');
   }
 
 }

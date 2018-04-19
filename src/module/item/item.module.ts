@@ -23,9 +23,10 @@ export interface Detail {
 
   DETAIL_ID:string;
   FOOD_NAME: string;
-  
-  DETAIL_AMOUT:string;
-  DETAIL_PRICE:string;
+  BUYER_NAME:string;
+
+  DETAIL_AMOUT:number;
+  DETAIL_PRICE:number;
   DETAIL_DATE:string;
   DETAIL_ADDRESS:string;
   DETAIL_STATUS:string;

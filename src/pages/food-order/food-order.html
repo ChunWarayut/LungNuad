@@ -1,0 +1,69 @@
+<!--
+  Generated template for the FoodOrderPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>foodOrder</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <span  *ngFor="let detail of DetailList$ "> 
+        {{sum(detail.DETAIL_PRICE)}} 
+        
+      </span>
+      {{total_sum}}
+    <button ion-button block (click)="GoBack()">สั่งอาหารเพิ่ม</button>
+    <button ion-button block (click)="GoBack()">ยืนยันคำสั่งซื้อ</button>
+  <ion-grid>
+      <ion-row>
+        <ion-col *ngFor="let detail of DetailList$ | async">
+
+        <ion-list>   
+    
+          <ion-label> 
+            รหัสสั่งซื้อ : {{detail.DETAIL_ID}}
+          </ion-label>
+  
+          <ion-label> 
+            ชื่ออาหาร : {{detail.FOOD_NAME}}
+          </ion-label>
+
+          <ion-label>           
+            ชื่อลูกค้า : {{detail.BUYER_NAME}}          
+          </ion-label>
+
+          <ion-label>           
+            จำนวน : {{detail.DETAIL_AMOUT}}          
+          </ion-label>  
+
+          <ion-label> 
+            ราคา : {{detail.DETAIL_PRICE}}<!-- {{sum(detail.DETAIL_PRICE)}} -->
+          </ion-label>
+  
+          <ion-label> 
+            วันที่ : {{detail.DETAIL_DATE}}
+          </ion-label>
+
+          <ion-label>           
+            ที่อยู่ : {{detail.DETAIL_ADDRESS}}          
+          </ion-label>
+
+          <ion-label>           
+            สถานะ : {{detail.DETAIL_STATUS}}          
+          </ion-label>
+
+        </ion-list>
+
+      </ion-col>
+     
+
+    </ion-row>
+  </ion-grid>
+</ion-content>

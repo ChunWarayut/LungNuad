@@ -6,6 +6,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
+ * 
+ * new Date().toISOString()
+ * 
  */
 
 @IonicPage()
@@ -14,8 +17,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'login-admin.html',
 })
 export class LoginAdminPage {
-
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+
   }
 
   ionViewDidLoad() {
@@ -26,4 +29,5 @@ export class LoginAdminPage {
     //Api connections
     this.navCtrl.push('HomeAdminPage');
   }
+
 }
