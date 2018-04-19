@@ -25,8 +25,7 @@
         <ion-label>ชื่อประเภท</ion-label>
       <ion-input [(ngModel)]="type.FOOD_TYPE_NAME"></ion-input>
       </ion-item>
-
+    </ion-card>
       <button ion-button block (click)="save(type)">ยืนยันการแก้ไข</button>
       
-      <button ion-button block (click)="removeItem(type)">ลบ</button>
-    </ion-card>
+      <button ion-button block color="danger" (click)="removeItem(type)">ลบ</button>
