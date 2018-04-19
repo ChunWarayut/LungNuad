@@ -45,15 +45,7 @@ export class FoodOrderPage {
     console.log('ionViewDidLoad FoodOrderPage');
   }
   GoBack(){
-    this.navCtrl.setRoot('FoodListPage');
+    this.navCtrl.setRoot('FoodStatusPage');
   }
-
-  total_sum = 0;
-
-  sum (item){
-    this.total_sum+=item;
-  }
-
-
   
 }
