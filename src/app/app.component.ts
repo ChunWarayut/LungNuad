@@ -22,6 +22,7 @@ export class MyApp {
       { title: 'เลือกอาหาร', component: 'FoodListPage' },
       { title: 'อาหารที่สั่ง', component: 'FoodOrderPage' },
       { title: 'สถานะอาหารที่สั่ง', component: 'FoodStatusPage' },
+      { title: 'ตั้งค่า', component: 'SettingPage' },
       { title: 'ออกจากระบบ', component: 'LogoutBuyerPage' }
     ];
 
