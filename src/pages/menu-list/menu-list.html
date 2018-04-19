@@ -41,7 +41,7 @@
     -->
     <ion-grid>
         <ion-row>
-          <ion-col align="center" col-6 *ngFor="let food of FoodList$ | async" detail-push navPush="MenuListEditPage" [navParams]="{item: item}">
+          <ion-col align="center" col-6 *ngFor="let food of FoodList$ | async" detail-push navPush="MenuListEditPage" [navParams]="{food: food}">
 
     <ion-card > 
 <!--

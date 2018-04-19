@@ -32,7 +32,7 @@
         </ion-refresher-content>-->
       </ion-refresher>
       <!--  -->
-      <ion-card color="Beige" *ngFor="let type of TypeList$ | async" detail-push navPush="MenuTypeEditPage" [navParams]="{item: item}"> 
+      <ion-card color="Beige" *ngFor="let type of TypeList$ | async" detail-push navPush="MenuTypeEditPage" [navParams]="{type: type}"> 
         
         <ion-item>
           <ion-label>รหัสประเภทอาหาร</ion-label> 
