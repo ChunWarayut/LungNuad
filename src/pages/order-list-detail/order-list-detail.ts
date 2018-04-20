@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
 import { Detail } from './../../module/item/item.module';
 import { Observable } from 'rxjs/Observable';
@@ -23,7 +23,7 @@ export class OrderListDetailPage {
 
   detail:Detail
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,  private detailing: ServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,  private detailing: ServiceProvider, public alertCtrl: AlertController) {
 
 
     this.DetailList$ = this.detailing
@@ -45,9 +45,36 @@ export class OrderListDetailPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad FoodOrderPage');
   }
-  
+  /*
   GoBack(){
     this.navCtrl.setRoot('FoodStatusPage');
   }
+
+*/
+  GoBack(){
+  let confirm = this.alertCtrl.create({
+    title: this.detail.FOOD_NAME,
+    message: 'คุณต้องการสั่ง  '+this.detail.FOOD_NAME+' ใช่หรือไม่',
+    buttons: [
+      {
+        text: 'ไม่ใช่',
+        handler: () => {
+          console.log('Disagree clicked');
+          this.navCtrl.setRoot('FoodStatusPage');
+        }
+      },
+      {
+        text: 'ใช่',
+        handler: () => {
+          console.log('Agree clicked');    this.navCtrl.setRoot('FoodStatusPage');
+
+    
+        }
+      }
+    ]
+  });
+  confirm.present();
+}
+
 
 }

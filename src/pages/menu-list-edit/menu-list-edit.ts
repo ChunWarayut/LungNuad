@@ -67,7 +67,7 @@ export class MenuListEditPage {
   ionViewWillLoad() {
     this.food = this.navParams.get('food');
   }
-
+/*
 
   save(food){
 
@@ -77,14 +77,115 @@ export class MenuListEditPage {
       this.toast.show(`${food.FOOD_NAME} save!`)
       this.navCtrl.setRoot('HomeAdminPage');});
   }
+  */
+
+
+ /*
   removeItem(food){
     this.fooding.removeFoodItem(food).then(()=>{
       this.toast.show(`${food.FOOD_NAME} deleted!`);
       this.navCtrl.setRoot('HomeAdminPage');
     });
   }
+*/
+
+save(food) {
+  let confirm = this.alertCtrl.create({
+    title: this.food.FOOD_NAME,
+    message: 'คุณต้องการแก้ไข  '+this.food.FOOD_NAME+' ใช่หรือไม่',
+    buttons: [
+      {
+        text: 'ไม่ใช่',
+        handler: () => {
+          console.log('Disagree clicked');
+          this.navCtrl.setRoot('HomeAdminPage')
+        }
+      },
+      {
+        text: 'ใช่',
+        handler: () => {
+          console.log('Agree clicked');
+          food.FOOD_TYPE_NAME = this.type.FOOD_TYPE_NAME;
+      
+          this.fooding.editFoodItem(food).then(() =>{
+            this.toast.show(`${food.FOOD_NAME} save!`)
+            this.navCtrl.setRoot('HomeAdminPage');});
+    
+        }
+      }
+    ]
+  });
+  confirm.present();
+}
+
+removeItem(food){
+  let confirm = this.alertCtrl.create({
+    title: this.food.FOOD_NAME,
+    message: 'คุณต้องการลบ  '+this.food.FOOD_NAME+' ใช่หรือไม่',
+    buttons: [
+      {
+        text: 'ไม่ใช่',
+        handler: () => {
+          console.log('Disagree clicked');
+          this.navCtrl.setRoot('HomeAdminPage')
+        }
+      },
+      {
+        text: 'ใช่',
+        handler: () => {
+          console.log('Agree clicked');
+          this.fooding.removeFoodItem(food).then(()=>{
+            this.toast.show(`${food.FOOD_NAME} deleted!`);
+            this.navCtrl.setRoot('HomeAdminPage');
+          });
+        }
+      }
+    ]
+  });
+  confirm.present();
+}
 
 
+saveDataImg(food){
+  let confirm = this.alertCtrl.create({
+    title: this.food.FOOD_NAME,
+    message: 'คุณต้องการแก้ไข  '+this.food.FOOD_NAME+' ใช่หรือไม่',
+    buttons: [
+      {
+        text: 'ไม่ใช่',
+        handler: () => {
+          console.log('Disagree clicked');
+          this.navCtrl.setRoot('HomeAdminPage')
+        }
+      },
+      {
+        text: 'ใช่',
+        handler: () => {
+          console.log('Agree clicked');
+          
+
+
+  food.FOOD_IMG = 'F_' + Math.floor(Date.now() / 100);
+  food.FOOD_TYPE_NAME = this.type.FOOD_TYPE_NAME;
+
+  this.fooding.editFoodItem(food).then(() =>{
+
+
+
+    this.toast.show(`${food.FOOD_NAME} save!`)
+    this.navCtrl.setRoot('HomeAdminPage');});
+    this.upload();
+
+
+    
+        }
+      }
+    ]
+  });
+  confirm.present();
+}
+
+/*
  saveDataImg(food){
 
 
@@ -101,7 +202,7 @@ export class MenuListEditPage {
 
 
   }
-
+*/
   selectPhoto(): void {
     const cameraOptions: CameraOptions = {
       quality: 10,

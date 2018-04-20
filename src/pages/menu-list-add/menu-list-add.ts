@@ -69,6 +69,8 @@ export class MenuListAddPage {
     console.log('ionViewDidLoad MenuListAddPage');
   }
 
+
+/*
   addFoodItem(food:Food){
 
 
@@ -87,6 +89,45 @@ export class MenuListAddPage {
 
 
   }
+*/
+
+addFoodItem(food:Food){
+  let confirm = this.alertCtrl.create({
+    title: this.food.FOOD_NAME,
+    message: 'คุณต้องการเพิ่ม  '+this.food.FOOD_NAME+' ใช่หรือไม่',
+    buttons: [
+      {
+        text: 'ไม่ใช่',
+        handler: () => {
+          console.log('Disagree clicked');
+          this.navCtrl.setRoot('HomeAdminPage')
+        }
+      },
+      {
+        text: 'ใช่',
+        handler: () => {
+          console.log('Agree clicked');
+
+          food.FOOD_ID = 'F_' + Math.floor(Date.now() / 100);
+          food.FOOD_IMG = this.food.FOOD_ID;
+      
+          food.FOOD_TYPE_NAME = this.type.FOOD_TYPE_NAME;
+          this.fooding.addFoodItem(food).then(ref =>{
+      
+            this.toast.show(`${food.FOOD_NAME}  เพิ่มสำเร็จ`)
+      
+            this.navCtrl.setRoot('HomeAdminPage', {key:ref.key});
+          });
+      
+          this.upload();
+      
+      
+        }
+      }
+    ]
+  });
+  confirm.present();
+}
 
   selectPhoto(): void {
     const cameraOptions: CameraOptions = {

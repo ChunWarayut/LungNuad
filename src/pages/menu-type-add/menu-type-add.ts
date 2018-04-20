@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Type } from '../../module/item/item.module';
 import { ServiceProvider } from '../../providers/service/service';
 import { ToastServiceProvider } from '../../providers/toast-service/toast-service';
@@ -25,13 +25,13 @@ export class MenuTypeAddPage {
 
   };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private typeing:ServiceProvider, private toast:ToastServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private typeing:ServiceProvider, private toast:ToastServiceProvider, public alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MenuTypeAddPage');
   }
-
+/*
   addTypeItem(type:Type){
 
     this.type.FOOD_TYPE_ID = "T_" + Math.floor(Date.now() / 100);
@@ -42,6 +42,38 @@ export class MenuTypeAddPage {
 
       this.navCtrl.setRoot('HomeAdminPage', {key:ref.key});
     });
+  }
+  */
+ 
+  showConfirm(type:Type) {
+    let confirm = this.alertCtrl.create({
+      title: this.type.FOOD_TYPE_NAME,
+      message: 'คุณต้องการเพิ่ม  '+this.type.FOOD_TYPE_NAME+' ใช่หรือไม่',
+      buttons: [
+        {
+          text: 'ไม่ใช่',
+          handler: () => {
+            console.log('Disagree clicked');
+            this.navCtrl.setRoot('HomeAdminPage')
+          }
+        },
+        {
+          text: 'ใช่',
+          handler: () => {
+            console.log('Agree clicked');
+
+            this.type.FOOD_TYPE_ID = "T_" + Math.floor(Date.now() / 100);
+
+            this.typeing.addTypeItem(type).then(ref =>{
+        
+              this.toast.show(`${type.FOOD_TYPE_NAME}  เพิ่มสำเร็จ`)
+        
+              this.navCtrl.setRoot('HomeAdminPage', {key:ref.key});
+            });          }
+        }
+      ]
+    });
+    confirm.present();
   }
   
 }
