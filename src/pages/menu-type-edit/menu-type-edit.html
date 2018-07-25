@@ -10,12 +10,26 @@
     
     <ion-title>{{type?.FOOD_TYPE_NAME}}</ion-title>
 
+    <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+    <ion-grid>
+        <ion-row>
+    
+            <ion-col>
+    
+            </ion-col>
+    
+          <ion-col col-auto>
+
+
     <ion-card color="primary"> 
       
       <ion-item color="Beige">
@@ -29,3 +43,9 @@
       <button ion-button block (click)="save(type)">แก้ไข</button>
       
       <button ion-button block color="danger" (click)="removeItem(type)">ลบ</button>
+
+      </ion-col>
+      </ion-row>
+      </ion-grid>
+      </ion-content>
+    

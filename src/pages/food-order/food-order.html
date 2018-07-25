@@ -8,12 +8,24 @@
 
     <ion-navbar color="boa">
         <ion-title>foodOrder</ion-title>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+
+    <ion-grid>
+        <ion-row>
+    
+            <ion-col>
+    
+            </ion-col>
+    
+          <ion-col col-auto>
    
     <button ion-button block (click)="GoBack()">สั่งอาหารเพิ่ม</button>
     <button ion-button block color="energy" (click)="GoBack()">ตรวจสอบสถานะ</button>
@@ -131,5 +143,8 @@
      
 
     </ion-row>
+  </ion-grid>
+  </ion-col>
+  </ion-row>
   </ion-grid>
 </ion-content>

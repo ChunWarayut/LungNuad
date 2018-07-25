@@ -8,12 +8,25 @@
 
     <ion-navbar color="boa">
         <ion-title>orderList</ion-title>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+          </button>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
+
+
+    <ion-grid>
+        <ion-row>
+    
+            <ion-col>
+    
+            </ion-col>
+    
+          <ion-col col-auto>
 
     <ion-card *ngFor="let detail of DetailList$ | async" detail-push navPush="OrderListDetailPage" [navParams]="{food: food}">
       <ion-grid>
@@ -31,5 +44,9 @@
         </ion-row>
       </ion-grid>
     </ion-card>
+
+    </ion-col>
+    </ion-row>
+    </ion-grid>
   </ion-content>
   

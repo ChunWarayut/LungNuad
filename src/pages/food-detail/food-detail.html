@@ -8,27 +8,57 @@
 
   <ion-navbar color="boa">
     <ion-title>{{food?.FOOD_NAME}}</ion-title>
+    <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
   </ion-navbar>
 
 </ion-header>
 
 
+
+
+
+
 <ion-content padding>
-  <ion-card color="primary"> 
+
+
+    <ion-grid>
+        <ion-row>
+    
+            <ion-col>
+    
+            </ion-col>
+    
+          <ion-col col-auto>
+
+                  <img  src="https://firebasestorage.googleapis.com/v0/b/lungnuad-a547e.appspot.com/o/images%2F{{food?.FOOD_IMG}}.jpg?alt=media&token=b934ec8f-234a-47cf-9d6a-4b5376fdb8d8">
+            
+    
     <ion-item color="Beige">
-        <img  src="https://firebasestorage.googleapis.com/v0/b/lungnuad-a547e.appspot.com/o/images%2F{{food?.FOOD_IMG}}.jpg?alt=media&token=b934ec8f-234a-47cf-9d6a-4b5376fdb8d8">
+      <ion-label><b>เมนู : {{food?.FOOD_NAME}}</b></ion-label>
     </ion-item>
     <ion-item color="Beige">
-      <ion-label>เมนู {{food?.FOOD_NAME}}</ion-label>
+      <ion-label><b>ราคา : {{food?.FOOD_PRICE}}</b></ion-label>
     </ion-item>
-    <ion-item color="Beige">
-      <ion-label>ราคา {{food?.FOOD_PRICE}}</ion-label>
-    </ion-item>
-    <ion-item color="energy">
-      <ion-label>จำนวน</ion-label>
-    <ion-input [(ngModel)]="detail.DETAIL_AMOUT"></ion-input>
-    </ion-item>
-    <button ion-button block (click)=" addDetailItem(detail)">สั่งเมนูนี้</button>
-    </ion-card>
+
+    
+    <ion-item >
+        <ion-label>จำนวน : </ion-label>
+      <ion-input [(ngModel)]="detail.DETAIL_AMOUT"></ion-input>
+      </ion-item>
+      <button ion-button block (click)=" addDetailItem(detail)">สั่งเมนูนี้</button>
+
+
+
+    
+  </ion-col>
+     
+  <ion-col>
+    
+  </ion-col>
+
+</ion-row>
+</ion-grid>
 
 </ion-content>

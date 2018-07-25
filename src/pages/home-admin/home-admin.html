@@ -8,15 +8,43 @@
 
   <ion-navbar>
     <ion-title>สำหรับผู้ดูแลระบบ</ion-title>
+    <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
   </ion-navbar>
 
 </ion-header>
 
 
   <ion-content>
+
+
+
+      <ion-grid>
+          <ion-row>
+      
+              <ion-col>
+      
+              </ion-col>
+      
+            <ion-col col-auto>
+
+
     <ion-list>
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
         {{p.title}}
       </button>
     </ion-list>
+
+
+    
+  </ion-col>
+     
+  <ion-col>
+    
+  </ion-col>
+
+</ion-row>
+</ion-grid>
+
   </ion-content>

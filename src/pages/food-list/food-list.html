@@ -7,13 +7,30 @@
 <ion-header>
 
     <ion-navbar color="boa">
-      <ion-title>foodList</ion-title>
+      <ion-title>รายการอาหาร</ion-title>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content >
+
+
+    <ion-grid>
+        <ion-row>
+    
+            <ion-col>
+    
+            </ion-col>
+    
+          <ion-col col-auto>
+
+            
+
+
     <!-- Refresh -->
     <ion-refresher (ionRefresh)="doRefresh($event)">
       <ion-refresher-content
@@ -51,4 +68,17 @@
     </ion-infinite-scroll-content>
   </ion-infinite-scroll>
 -->
+
+
+
+</ion-col>
+     
+<ion-col>
+  
+</ion-col>
+
+</ion-row>
+</ion-grid>
+
+
 </ion-content>

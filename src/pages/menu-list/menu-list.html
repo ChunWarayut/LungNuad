@@ -9,6 +9,9 @@
 
   <ion-navbar color="boa">
     <ion-title>menuList</ion-title>
+    <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
 
     <ion-buttons end>
       <button navPush="MenuListAddPage" ion-button>
@@ -22,6 +25,20 @@
 
 
 <ion-content>
+
+
+    <ion-grid>
+        <ion-row>
+    
+            <ion-col>
+    
+            </ion-col>
+    
+          <ion-col col-auto>
+
+
+
+
   <!-- Refresh -->
   <ion-refresher (ionRefresh)="doRefresh($event)">
       <ion-refresher-content
@@ -98,4 +115,10 @@
   </ion-row>
   </ion-grid>
 -->
+
+
+</ion-col>
+</ion-row>
+</ion-grid>
+
 </ion-content>

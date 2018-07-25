@@ -19,39 +19,58 @@
 
 
 <ion-content padding align="center">
+  <ion-grid>
+    <ion-row>
 
+        <ion-col>
+
+        </ion-col>
+
+      <ion-col col-auto>
+        
+        
   <p> </p>
-    <h1>Welcome to LungNuadFoods </h1>
-    <br/>
+  <h1 align="center"> ราดแกงลุงหนวด </h1>
+  <br/>
+<p align="center">
+  <img src="assets/imgs/001.jpg" />
+</p>
 
-    <img src="assets/imgs/001.jpg" />
-
-    <ion-grid>
-        <ion-row>
-          <ion-col>
-            <h1></h1>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    
-      <ion-grid >
-        <ion-row>
+  <ion-grid>
+      <ion-row>
+        <ion-col>
+          <h1></h1>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  
+    <ion-grid >
+      <ion-row>
+        <ion-col center text-center>
+          <button ion-button full color="energy" (click)="signup()">สมัครสมาชิก</button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col center text-center>
+          <button ion-button full color="primary" (click)="login()">เข้าสู่ระบบ</button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
           <ion-col center text-center>
-            <button ion-button full color="energy" (click)="signup()">Sign up</button>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col center text-center>
-            <button ion-button full color="primary" (click)="login()">Log in</button>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-            <ion-col center text-center>
-                <br/>
+              <br/>
 
-              <button ion-button full color="danger" (click)="loginAdmin()">เฉพาะผู้ดูแล</button>
-            </ion-col>
-          </ion-row>
-      </ion-grid>
+            <button ion-button full color="danger" (click)="loginAdmin()">เฉพาะผู้ดูแล</button>
+          </ion-col>
+        </ion-row>
+    </ion-grid>
+
+      </ion-col>
+     
+      <ion-col>
+        
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
 
 </ion-content>

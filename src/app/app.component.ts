@@ -23,7 +23,7 @@ export class MyApp {
       { title: 'อาหารที่สั่ง', component: 'FoodOrderPage' },
       { title: 'สถานะอาหารที่สั่ง', component: 'FoodStatusPage' },
       { title: 'ตั้งค่า', component: 'SettingPage' },
-      { title: 'ออกจากระบบ', component: 'LogoutBuyerPage' }
+      { title: 'ออกจากระบบ', component: 'HomePage' }
     ];
 
     platform.ready().then(() => {
