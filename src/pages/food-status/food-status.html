@@ -18,33 +18,39 @@
 
 <ion-content>
 
-
     <ion-grid>
         <ion-row>
-    
-            <ion-col>
-    
-            </ion-col>
-    
-          <ion-col col-auto>
+          <ion-col>
+  
+          </ion-col>
 
+          <ion-col>
   <ion-card *ngFor="let detail of DetailList$ | async">
     <ion-grid>
       <ion-row>
-        <ion-col col-8>
+        <ion-col>
+
+        </ion-col>
+        <ion-col col-auto>
           <ion-label > 
             รหัสสั่งซื้อ : {{detail.DETAIL_ID}}
           </ion-label>
         </ion-col>
-        <ion-col col-4>
+        <ion-col col-auto>
           <ion-label > 
               {{detail.DETAIL_STATUS}} 
           </ion-label>
         </ion-col>
+        <ion-col>
+
+        </ion-col>
       </ion-row>
     </ion-grid>
   </ion-card>
-  </ion-col>
-  </ion-row>
-  </ion-grid>
+</ion-col>
+<ion-col>
+  
+</ion-col>
+</ion-row>
+</ion-grid>
 </ion-content>

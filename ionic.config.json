@@ -1,8 +1,8 @@
 {
   "name": "lungnuad",
-  "app_id": "704bd2d5",
-  "type": "ionic-angular",
   "integrations": {
     "cordova": {}
-  }
+  },
+  "type": "ionic-angular",
+  "pro_id": "704bd2d5"
 }
