@@ -54,7 +54,7 @@ export class FoodListPage {
     setTimeout(() => {
       console.log('Async operation has ended');
       refresher.complete();
-    }, 9000);   
+    }, 2000);   
      
   }
 

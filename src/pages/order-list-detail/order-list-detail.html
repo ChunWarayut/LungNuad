@@ -18,16 +18,6 @@
 
 <ion-content padding>
 
-
-    <ion-grid>
-        <ion-row>
-    
-            <ion-col>
-    
-            </ion-col>
-    
-          <ion-col col-auto>
-
     <ion-grid>
         <ion-row>
           <ion-col *ngFor="let detail of DetailList$ | async">
@@ -133,11 +123,20 @@
               </ion-label>
     
             </ion-item>
-  
 
-            <button ion-button full color="Beige">กำลังจัดเตรียมอาหาร</button>
-            <button ion-button full color="PaleGoldenrod">อยู่ในระหว่างการจัดส่ง</button>
-            <button ion-button full color="energy">ส่งสำเร็จ</button>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                    <button ion-button full color="Beige">กำลังจัดเตรียมอาหาร</button>
+                </ion-col>
+                <ion-col>
+                    <button ion-button full color="PaleGoldenrod">อยู่ในระหว่างการจัดส่ง</button>
+                </ion-col>
+                <ion-col>
+                    <button ion-button full color="energy">ส่งสำเร็จ</button>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
 
           </ion-list>
   
@@ -147,13 +146,4 @@
       </ion-row>
     </ion-grid>
  
-  </ion-col>
-     
-  <ion-col>
-    
-  </ion-col>
-
-</ion-row>
-</ion-grid>
-
 </ion-content>

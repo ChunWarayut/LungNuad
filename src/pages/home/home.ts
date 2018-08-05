@@ -25,11 +25,15 @@ export class HomePage {
   login(){
     this.navCtrl.push('LoginBuyerPage');
   }
-
-  loginAdmin(){
-    this.navCtrl.push('LoginAdminPage');
-  }
-  
+/**
+loginAdmin(){
+ this.navCtrl.push('LoginAdminPage');
+}
+  **/
+ loginAdmin(){
+  this.navCtrl.push('CartPage');
+ }
+ 
   signup(){
   this.navCtrl.push('SigninBuyerPage');
   }

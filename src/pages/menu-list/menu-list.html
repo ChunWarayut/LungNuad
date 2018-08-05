@@ -15,7 +15,7 @@
 
     <ion-buttons end>
       <button navPush="MenuListAddPage" ion-button>
-        <ion-icon name="cart"></ion-icon>
+        <ion-icon ios="ios-add-circle-outline" md="md-add-circle"></ion-icon>
       </button>
     </ion-buttons>
 
@@ -85,23 +85,26 @@
             </ion-label> 
           </ion-item>      
 
-        <ion-label> 
-          ชื่อ : {{food.FOOD_NAME}}
-        </ion-label>
-
+          <ion-list>
+              <ion-label align="left">           
+               &nbsp;  รหัส : {{food.FOOD_ID}}          
+              </ion-label>
       
-          
-          <ion-label> 
-           ราคา : {{food.FOOD_PRICE}}
-          </ion-label>
+              <ion-label align="left"> 
+               &nbsp;  ชื่อ : {{food.FOOD_NAME}}
+              </ion-label>
+      
+              <ion-label align="left"> 
+               &nbsp;  ราคา : {{food.FOOD_PRICE}}
+              </ion-label>
+      
+              <ion-label align="left">           
+               &nbsp;  ประเภทอาหาร : {{food.FOOD_TYPE_NAME}}          
+              </ion-label>
+      
 
-          <ion-label>           
-              ประเภทอาหาร : {{food.FOOD_TYPE_NAME}}          
-          </ion-label>
-
-          <ion-label>           
-              รหัส : {{food.FOOD_ID}}          
-             </ion-label>
+          </ion-list>
+         
 
     </ion-card>   
 

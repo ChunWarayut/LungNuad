@@ -47,7 +47,10 @@ export class FoodOrderPage {
   }
   
   GoBack(){
-    this.navCtrl.setRoot('FoodStatusPage');
+    this.navCtrl.setRoot('FoodListPage');
   }
 
+  GoBackStatus(){
+    this.navCtrl.setRoot('FoodStatusPage');
+  }
 }

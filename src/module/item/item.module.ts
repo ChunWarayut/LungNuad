@@ -46,3 +46,14 @@ export interface Buyer {
   BUYER_EMAIL:string;
 
 }
+
+export interface Cart {
+
+  key?:string;
+  
+  CART_ID:string;
+  CART_NAME:string;
+  CART_PRICE: number;
+  CART_AMOUT:number;
+
+}
