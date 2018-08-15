@@ -91,7 +91,7 @@
               วันที่ : 
             </ion-label>
   
-            <ion-label text-wrap> 
+            <ion-label > 
                 {{detail.DETAIL_DATE}}
               </ion-label>
     
@@ -126,13 +126,13 @@
             <ion-grid>
               <ion-row>
                 <ion-col>
-                    <button ion-button full color="Beige">กำลังจัดเตรียมอาหาร</button>
+                    <button ion-button full color="Beige" (click)=getUpdate0(detail)>กำลังจัดเตรียมอาหาร</button>
                 </ion-col>
                 <ion-col>
-                    <button ion-button full color="PaleGoldenrod">อยู่ในระหว่างการจัดส่ง</button>
+                    <button ion-button full color="PaleGoldenrod" (click)=getUpdate1(detail)>อยู่ในระหว่างการจัดส่ง</button>
                 </ion-col>
                 <ion-col>
-                    <button ion-button full color="energy">ส่งสำเร็จ</button>
+                    <button ion-button full color="energy" (click)=getUpdate2(detail)>ส่งสำเร็จ</button>
                 </ion-col>
               </ion-row>
             </ion-grid>

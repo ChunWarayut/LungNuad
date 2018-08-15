@@ -6,6 +6,8 @@ import { Detail } from './../../module/item/item.module';
 import { Observable } from 'rxjs/Observable';
 import { ServiceProvider } from '../../providers/service/service';
 
+
+
 /**
  * Generated class for the OrderListDetailPage page.
  *
@@ -38,18 +40,6 @@ export class OrderListDetailPage {
   {
 
     
-    this.DetailList001$ = this.detailing
-    .getDetailList()
-    .snapshotChanges()
-    .map(
-      Change => {
-        return Change.map(c=> ({
-          key : c.payload.key,
-          ...c.payload.val().DETAIL_ORDER,
-        }));
-      });
-
-    
 
     this.DetailList$ = this.detailing
     .getDetailList()
@@ -79,4 +69,26 @@ export class OrderListDetailPage {
   }
 
 */
+
+getUpdate0(detail){
+
+    detail.DETAIL_STATUS = 'กำลังจัดเตรียมอาหาร'
+
+  this.detailing.editDetailItem(detail)
+}
+
+getUpdate1(detail){
+
+  detail.DETAIL_STATUS = 'อยู่ในระหว่างการจัดส่ง'
+
+  this.detailing.editDetailItem(detail)
+}
+
+getUpdate2(detail){
+  
+  detail.DETAIL_STATUS = 'ส่งสำเร็จ'
+
+  this.detailing.editDetailItem(detail)
+
+}
 }
