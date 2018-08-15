@@ -1,6 +1,6 @@
 import { ServiceProvider } from './../../providers/service/service';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import { Food } from '../../module/item/item.module';
 
@@ -22,7 +22,6 @@ export class FoodListPage {
   constructor(public navCtrl: NavController, 
     public navParams: NavParams, 
     private fooding: ServiceProvider,
-    public loadingCtrl: LoadingController
   ) {
     this.FoodList$ = this.fooding
     .getFoodList()
@@ -55,16 +54,9 @@ export class FoodListPage {
         }));
       });
 
-      let loading = this.loadingCtrl.create({
-        spinner: 'hide',
-        content: 'กำลังโหลด'
-      });
-    
-      loading.present();
     setTimeout(() => {
       console.log('Async operation has ended');
       refresher.complete();
-      loading.dismiss();
     }, 2000);   
      
   }

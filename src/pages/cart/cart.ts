@@ -4,7 +4,7 @@ import { ServiceProvider } from './../../providers/service/service';
 import { Cart, Food, Detail } from './../../module/item/item.module';
 import { Observable } from 'rxjs/Observable';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import firebase from 'firebase';
 
 /**
@@ -48,6 +48,7 @@ export class CartPage {
     public navParams: NavParams,
     private carting: ServiceProvider,
     private fdb: AngularFireDatabase,
+    public loadingCtrl: LoadingController,
     private toast: ToastServiceProvider,
     public alertCtrl: AlertController
   ) {
@@ -127,9 +128,20 @@ export class CartPage {
 
 
   ionViewDidLoad() {
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+  
+    loading.present();
+  
+    setTimeout(() => {
+      loading.dismiss();
+    }, 1400);
+
 
     var cartR = firebase.database().ref("total/");
     cartR.remove();
+
 
     console.log('ionViewDidLoad FoodOrderPage');    
 
@@ -151,4 +163,5 @@ export class CartPage {
     });
     
   }
+  
 }
