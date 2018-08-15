@@ -1,7 +1,7 @@
 import { ServiceProvider } from './../../providers/service/service';
 import { Food, Cart } from './../../module/item/item.module';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { ToastServiceProvider } from '../../providers/toast-service/toast-service';
 
 /**
@@ -34,6 +34,8 @@ export class FoodDetailPage {
     public navParams: NavParams, 
     private carting: ServiceProvider, 
     private toast: ToastServiceProvider, 
+    
+    public loadingCtrl: LoadingController,
     public alertCtrl: AlertController
   ) 
     {
@@ -47,6 +49,15 @@ export class FoodDetailPage {
   }
 
   ionViewWillLoad() {
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+  
+    loading.present();
+  
+    setTimeout(() => {
+      loading.dismiss();
+    }, 5000);
     this.food = this.navParams.get('food');
   }
 
