@@ -21,7 +21,6 @@ import firebase from 'firebase';
 })
 export class CartPage {
 
-  cdas: any;
   cartData = []
   CartList$: Observable<Cart[]>;
   
@@ -55,9 +54,7 @@ export class CartPage {
 
     this.fdb.list("/total/").valueChanges().subscribe(_data => {
       this.arrData = _data;
- 
     });
-
 
     this.CartList$ = this.carting
       .getCartList()
@@ -69,68 +66,9 @@ export class CartPage {
             ...c.payload.val(),
           }));
         });
-
-
-    /*
-    var cartRef = firebase.database().ref("cart-list/");
-
-    cartRef.on("child_added", function(data, prevChildKey) {
-       var newCart = data.val();
-       var total = 5 + newCart.CART_PRICE;
-       console.log(total);
-       
-       console.log("CART_NAME: " + newCart.CART_NAME);
-       console.log("CART_PRICE: " + newCart.CART_PRICE);
-       console.log("CART_AMOUT: " + newCart.CART_AMOUT);
-       console.log("CART_ID: " + prevChildKey);
-      
-    });
-    */
-
-
   }
 
 
-
-  ionViewDidLoad() {
-
-    var cartR = firebase.database().ref("total/");
-    cartR.remove();
-
-    console.log('ionViewDidLoad FoodOrderPage');    
-
-    var total = 0;
-    var cartRef = firebase.database()
-    .ref("cart-list/");
-      this.fdb.list('total').valueChanges().subscribe(data=>{
-       var gg =data.length
-      console.log(gg); 
-      })
-
-
-
-    cartRef.orderByChild("CART_PRICE")
-    .on("child_added", function myCart (data) {
-      var add = 0;
-      add = Number( data.val().CART_PRICE );
-      total += add;
-
-    
-    var cartRe = firebase.database()
-    .ref("total/");
-
-    var totjk = {
-      TOTAL_TOTAL:total
-      
-    }
-    console.log(totjk);
-    
-    cartRe.update(totjk);
-      
-    });
-
-    
-  }
 
   GoBack() {
     
@@ -187,4 +125,30 @@ export class CartPage {
     confirm.present();
   }
 
+
+  ionViewDidLoad() {
+
+    var cartR = firebase.database().ref("total/");
+    cartR.remove();
+
+    console.log('ionViewDidLoad FoodOrderPage');    
+
+    var total = 0;
+
+    var cartRef = firebase.database()
+    .ref("cart-list/");
+    cartRef.orderByChild("CART_PRICE")
+    .on("child_added", function myCart (data) {
+      var add = 0;
+      add = Number( data.val().CART_PRICE );
+      total += add;
+    var cartRe = firebase.database()
+    .ref("total/");
+    var totjk = {
+      TOTAL_TOTAL:total
+    }
+    cartRe.update(totjk);
+    });
+    
+  }
 }
