@@ -17,8 +17,8 @@ export class ServiceProvider {
   private buyerlListRef = this.db.list<Buyer>('buyer-list');
   private cartListRef = this.db.list<Cart>(`cart-list`)
 
-
-  constructor(private db:AngularFireDatabase){}
+  constructor(private db: AngularFireDatabase){
+  }
 
   getFoodList() {
     return this.foodListRef;

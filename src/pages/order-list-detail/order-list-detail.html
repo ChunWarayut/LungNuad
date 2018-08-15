@@ -38,15 +38,32 @@
   
             <ion-item>
             
-            <ion-label fixed> 
-              ชื่ออาหาร :
-            </ion-label>
-  
-            <ion-label > 
-              {{detail.FOOD_NAME}}
+            <ion-label align='center'> 
+             อาหารที่สั่ง
             </ion-label>
   
             </ion-item>
+
+            <ion-grid>
+                <ion-row>
+                  <ion-col *ngFor="let detail of DetailList001$ | async">
+          
+                  {{detail|json}}
+
+            </ion-col>
+            </ion-row>
+            </ion-grid>
+
+      
+
+
+
+
+
+
+
+
+
   
   
             <ion-item>
@@ -61,17 +78,6 @@
   
             </ion-item>
   
-            <ion-item>
-  
-            <ion-label fixed>           
-              จำนวน :       
-            </ion-label>  
-  
-            <ion-label>           
-               {{detail.DETAIL_AMOUT}}          
-            </ion-label>  
-  
-            </ion-item>
   
             <ion-item>
   
@@ -80,7 +86,7 @@
             </ion-label>
     
             <ion-label> 
-               {{detail.DETAIL_PRICE}}
+               {{detail.DETAIL_TOTAL}} 
               </ion-label>
       
             </ion-item>

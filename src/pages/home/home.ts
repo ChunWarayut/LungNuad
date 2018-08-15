@@ -31,7 +31,7 @@ loginAdmin(){
 }
   **/
  loginAdmin(){
-  this.navCtrl.push('CartPage');
+  this.navCtrl.push('LoginAdminPage');
  }
  
   signup(){

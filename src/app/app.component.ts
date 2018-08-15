@@ -20,7 +20,7 @@ export class MyApp {
   
     this.pages = [
       { title: 'เลือกอาหาร', component: 'FoodListPage' },
-      { title: 'อาหารที่สั่ง', component: 'FoodOrderPage' },
+      { title: 'อาหารที่สั่ง', component: 'CartPage' },
       { title: 'สถานะอาหารที่สั่ง', component: 'FoodStatusPage' },
       { title: 'ตั้งค่า', component: 'SettingPage' },
       { title: 'ออกจากระบบ', component: 'HomePage' }

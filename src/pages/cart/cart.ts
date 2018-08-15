@@ -1,9 +1,11 @@
+import { AngularFireDatabase } from 'angularfire2/database';
 import { ToastServiceProvider } from './../../providers/toast-service/toast-service';
 import { ServiceProvider } from './../../providers/service/service';
 import { Cart, Food, Detail } from './../../module/item/item.module';
 import { Observable } from 'rxjs/Observable';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import firebase from 'firebase';
 
 /**
  * Generated class for the CartPage page.
@@ -19,70 +21,126 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 })
 export class CartPage {
 
-  CartList$:Observable<Cart[]>;
+  cdas: any;
+  cartData = []
+  CartList$: Observable<Cart[]>;
+  
+  TotalList$: Observable<Cart[]>;
 
-  food:Food
-
-  detail:Detail = {
-
-    DETAIL_ID : undefined,
-    FOOD_NAME : undefined,
-    BUYER_NAME : undefined,
-    DETAIL_AMOUT : 1,
-    DETAIL_PRICE : undefined,
-    DETAIL_DATE : undefined,
-    DETAIL_ADDRESS : undefined,
-    DETAIL_STATUS : undefined
-
+  food: Food;
+  detail: Detail = {
+    DETAIL_ID: undefined,
+    BUYER_NAME: undefined,
+    DETAIL_ORDER: undefined,
+    DETAIL_TOTAL: undefined,
+    DETAIL_DATE: undefined,
+    DETAIL_ADDRESS: undefined,
+    DETAIL_STATUS: undefined
   }
-
-
-  cart:Cart = {
-
-    CART_ID : undefined,
-    CART_NAME : undefined,
-    CART_AMOUT : 1,
-    CART_PRICE : undefined,
-
+  cart: Cart = {
+    CART_ID: undefined,
+    CART_NAME: undefined,
+    CART_AMOUT: 1,
+    CART_PRICE: undefined,
   }
-
-
+  arrData=[]
   constructor(
-    public navCtrl: NavController, 
-    public navParams: NavParams, 
-    private carting: ServiceProvider, 
-    
-    private detailing: ServiceProvider, 
-    private toast: ToastServiceProvider, 
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private carting: ServiceProvider,
+    private fdb: AngularFireDatabase,
+    private toast: ToastServiceProvider,
     public alertCtrl: AlertController
-  ) 
-    {
+  ) {
+
+    this.fdb.list("/total/").valueChanges().subscribe(_data => {
+      this.arrData = _data;
+ 
+    });
+
 
     this.CartList$ = this.carting
-    .getCartList()
-    .snapshotChanges()
-    .map(
-      Change => {
-        return Change.map(c=> ({
-          key : c.payload.key,
-          ...c.payload.val(),
-        }));
-      });
+      .getCartList()
+      .snapshotChanges()
+      .map(
+        Change => {
+          return Change.map(c => ({
+            key: c.payload.key,
+            ...c.payload.val(),
+          }));
+        });
 
 
+    /*
+    var cartRef = firebase.database().ref("cart-list/");
+
+    cartRef.on("child_added", function(data, prevChildKey) {
+       var newCart = data.val();
+       var total = 5 + newCart.CART_PRICE;
+       console.log(total);
+       
+       console.log("CART_NAME: " + newCart.CART_NAME);
+       console.log("CART_PRICE: " + newCart.CART_PRICE);
+       console.log("CART_AMOUT: " + newCart.CART_AMOUT);
+       console.log("CART_ID: " + prevChildKey);
       
+    });
+    */
+
 
   }
+
+
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad FoodOrderPage');
-  }
-  
-  GoBack(){
-    this.navCtrl.setRoot('FoodListPage');
+
+    var cartR = firebase.database().ref("total/");
+    cartR.remove();
+
+    console.log('ionViewDidLoad FoodOrderPage');    
+
+    var total = 0;
+    var cartRef = firebase.database()
+    .ref("cart-list/");
+      this.fdb.list('total').valueChanges().subscribe(data=>{
+       var gg =data.length
+      console.log(gg); 
+      })
+
+
+
+    cartRef.orderByChild("CART_PRICE")
+    .on("child_added", function myCart (data) {
+      var add = 0;
+      add = Number( data.val().CART_PRICE );
+      total += add;
+
+    
+    var cartRe = firebase.database()
+    .ref("total/");
+
+    var totjk = {
+      TOTAL_TOTAL:total
+      
+    }
+    console.log(totjk);
+    
+    cartRe.update(totjk);
+      
+    });
+
+    
   }
 
-  addDetailItem(detail:Detail) {
+  GoBack() {
+    
+    var cartRef = firebase.database().ref("total/");
+    cartRef.remove();
+    this.navCtrl.setRoot('FoodListPage');
+    
+  }
+
+  addDetailItem(detail: Detail) {
     let confirm = this.alertCtrl.create({
       title: "สั่งอาหาร",
       message: 'คุณต้องการสั่งใช่หรือไม่',
@@ -98,28 +156,35 @@ export class CartPage {
           text: 'ใช่',
           handler: () => {
             console.log('Agree clicked');
-      this.detail.DETAIL_ID = 'D_' +  Math.floor(Date.now() / 100);
 
-      this.detail.FOOD_NAME=" ";
-      this.detail.BUYER_NAME ='0';
-      this.detail.DETAIL_AMOUT= 0;
-    
-      this.detail.DETAIL_PRICE =0;
-      this.detail.DETAIL_DATE ='0';
-      this.detail. DETAIL_ADDRESS ='0';
-      this.detail.DETAIL_STATUS ='0';
-  
-      this.detailing.addDetailItem(detail).then(ref =>{
-        this.toast.show(`สั่งอาหารสำเร็จ`)
-        this.navCtrl.setRoot('FoodListPage',  {key:ref.key});
-      });
+            // Using Date() function
+            var d = Date();
+            // Converting the number value to string
+            var a = d.toString()
 
-
-      this.carting.removeCartItem();
+            this.CartList$.subscribe(_data => {
+              this.cartData = _data;
+              this.detail.DETAIL_ID = 'D_' + Math.floor(Date.now() / 100);
+              this.detail.DETAIL_ORDER = this.cartData;
+              this.detail.DETAIL_TOTAL = this.arrData;
+              this.detail.BUYER_NAME = 'วรายุทธ เทกระโทก';
+              this.detail.DETAIL_ADDRESS = "25/1-2 ซอย 15 ";
+              this.detail.DETAIL_DATE = a;
+              this.detail.DETAIL_STATUS = 'กำลังดำเนินการ';
+              this.fdb.list('detail-list').push(detail).then(ref => {
+                this.toast.show(`สั่งอาหารสำเร็จ`)
+                this.navCtrl.setRoot('FoodListPage', { key: ref.key });
+              });
+            })
+            this.carting.removeCartItem();
+                    
+            var cartRef = firebase.database().ref("total/");
+            cartRef.remove();
           }
         }
       ]
     });
     confirm.present();
   }
+
 }

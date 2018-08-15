@@ -1,6 +1,6 @@
 import { ServiceProvider } from './../../providers/service/service';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import { Food } from '../../module/item/item.module';
 
@@ -17,10 +17,13 @@ import { Food } from '../../module/item/item.module';
   templateUrl: 'food-list.html',
 })
 export class FoodListPage {
-
   FoodList$:Observable<Food[]>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private fooding: ServiceProvider) {
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams, 
+    private fooding: ServiceProvider,
+    public loadingCtrl: LoadingController
+  ) {
     this.FoodList$ = this.fooding
     .getFoodList()
     .snapshotChanges()
@@ -35,6 +38,7 @@ export class FoodListPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FoodListPage');
+    
   }
 
   doRefresh(refresher) {
@@ -51,9 +55,16 @@ export class FoodListPage {
         }));
       });
 
+      let loading = this.loadingCtrl.create({
+        spinner: 'hide',
+        content: 'กำลังโหลด'
+      });
+    
+      loading.present();
     setTimeout(() => {
       console.log('Async operation has ended');
       refresher.complete();
+      loading.dismiss();
     }, 2000);   
      
   }

@@ -42,11 +42,14 @@ export class FoodDetailPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FoodDetailPage');
+    console.log(this.food);
+    
   }
 
   ionViewWillLoad() {
     this.food = this.navParams.get('food');
   }
+
 /*
   addDetailItem(detail:Detail){
 
@@ -85,6 +88,7 @@ export class FoodDetailPage {
         text: 'ใช่',
         handler: () => {
           console.log('Agree clicked');
+          
     this.cart.CART_ID = 'C_' +  Math.floor(Date.now() / 100);
 
     this.cart.CART_NAME = this.food.FOOD_NAME;
@@ -93,7 +97,7 @@ export class FoodDetailPage {
 
     this.carting.addCartItem(cart).then(ref =>{
       this.toast.show(`${cart.CART_NAME} สั่งอาหารสำเร็จ`)
-      this.navCtrl.setRoot('CartPage',  {key:ref.key});
+      this.navCtrl.setRoot('CartPage',  {key:ref.key}), {food:cart};
     });
     
         }

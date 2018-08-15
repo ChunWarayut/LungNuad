@@ -8,6 +8,14 @@ export interface Food {
   FOOD_TYPE_NAME: string;
 
 }
+export interface Total {
+  key?:string;
+
+  
+  TOTAL_TOTAL:any;
+
+  
+}
 export interface Type {
 
   key?:string;
@@ -22,11 +30,9 @@ export interface Detail {
   key?:string;
 
   DETAIL_ID:string;
-  FOOD_NAME: string;
   BUYER_NAME:string;
-
-  DETAIL_AMOUT:number;
-  DETAIL_PRICE:number;
+  DETAIL_ORDER:any;
+  DETAIL_TOTAL:any;
   DETAIL_DATE:string;
   DETAIL_ADDRESS:string;
   DETAIL_STATUS:string;

@@ -6,22 +6,39 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>cart</ion-title>
+  <ion-navbar  color="boa">
+
+    
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    
+
+    
+      <ion-title  *ngFor="let item of arrData"> รวม &nbsp;&nbsp; {{item}} &nbsp;&nbsp; บาท  </ion-title>
+ 
+
   </ion-navbar>
+
 
 </ion-header>
 
 
 <ion-content padding>
 
-   
+
+
+
   <button ion-button block (click)="GoBack()">สั่งอาหารเพิ่ม</button>
   <button ion-button block color="energy" (click)=" addDetailItem(detail)">ยืนยันคำสั่งซื้อ</button>
 
+
+
+     
+
 <ion-grid>
     <ion-row>
-      <ion-col *ngFor="let cart of CartList$ | async"> 
+      <ion-col *ngFor="let cart of CartList$ | async" > 
 
       <ion-list> 
           
@@ -32,7 +49,7 @@
         </ion-label>
 
         <ion-label > 
-        {{cart.CART_NAME}} 
+        {{cart.CART_NAME}}
         </ion-label>
 
         </ion-item>
@@ -44,7 +61,7 @@
         </ion-label>  
 
         <ion-label>           
-          {{cart.CART_AMOUT}}    
+          {{cart.CART_AMOUT}}   &nbsp;&nbsp;&nbsp;&nbsp;รายการ
         </ion-label>  
 
         </ion-item>
@@ -56,7 +73,7 @@
         </ion-label>
 
         <ion-label> 
-        {{cart.CART_PRICE}}
+        {{cart.CART_PRICE}}   &nbsp;&nbsp;&nbsp;&nbsp;บาท  <!--{{suma(cart.CART_PRICE)}}-->
           </ion-label>
   
         </ion-item>
