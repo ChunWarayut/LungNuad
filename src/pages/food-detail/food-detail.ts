@@ -43,22 +43,14 @@ export class FoodDetailPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad FoodDetailPage');
-    console.log(this.food);
     
   }
 
   ionViewWillLoad() {
-    let loading = this.loadingCtrl.create({
-      content: 'Please wait...'
-    });
-  
-    loading.present();
-  
-    setTimeout(() => {
-      loading.dismiss();
-    }, 5000);
+    
+    
     this.food = this.navParams.get('food');
+   
   }
 
 /*
@@ -107,8 +99,8 @@ export class FoodDetailPage {
 
 
     this.carting.addCartItem(cart).then(ref =>{
-      this.toast.show(`${cart.CART_NAME} สั่งอาหารสำเร็จ`)
-      this.navCtrl.setRoot('CartPage',  {key:ref.key}), {food:cart};
+      this.toast.show(`${cart.CART_NAME} เลือกอาหารสำเร็จ`)
+      this.navCtrl.setRoot('CartPage',  {key:ref.key});
     });
     
         }

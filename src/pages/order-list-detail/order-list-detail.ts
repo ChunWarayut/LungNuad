@@ -1,6 +1,6 @@
 
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 
 import { Detail } from './../../module/item/item.module';
 import { Observable } from 'rxjs/Observable';
@@ -35,6 +35,7 @@ export class OrderListDetailPage {
   arrData
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,  
+    public loadingCtrl: LoadingController,
     private detailing: ServiceProvider, 
     public alertCtrl: AlertController) 
   {
@@ -61,7 +62,15 @@ export class OrderListDetailPage {
     console.log('ionViewDidLoad FoodOrderPage');
 
     console.log(this.arrData);
-    
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+  
+    loading.present();
+  
+    setTimeout(() => {
+      loading.dismiss();
+    }, 1400);
   }
   /*
   GoBack(){
