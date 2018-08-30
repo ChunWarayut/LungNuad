@@ -101,7 +101,10 @@ export class CartPage {
               this.detail.DETAIL_DATE = a;
               this.detail.DETAIL_STATUS = 'กำลังดำเนินการ';
 
-              this.carting.addDetailItem(detail)
+    
+              setTimeout(() => {
+                this.carting.addDetailItem(detail)                
+              }, 2000);
               /*
               this.fdb.list('detail-list').push(detail).then(ref => {
                 this.navCtrl.setRoot('FoodListPage');

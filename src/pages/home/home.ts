@@ -23,7 +23,7 @@ export class HomePage {
   }
 
   login(){
-    this.navCtrl.push('LoginBuyerPage');
+    this.navCtrl.setRoot('FoodListPage');
   }
 /**
 loginAdmin(){

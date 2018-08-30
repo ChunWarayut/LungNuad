@@ -41,12 +41,24 @@
     <ion-grid >
       <ion-row>
         <ion-col center text-center>
-          <button ion-button full color="energy" (click)="signup()">สมัครสมาชิก</button>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col center text-center>
-          <button ion-button full color="primary" (click)="login()">เข้าสู่ระบบ</button>
+          
+  <ion-list>
+
+      <ion-item>
+        <ion-label fixed>ชื่อผู้ใช้</ion-label>
+        <ion-input type="text" value=""></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label fixed>รหัสผ่าน</ion-label>
+        <ion-input type="password"></ion-input>
+      </ion-item>
+    <p>
+        <a (click)="signup()">หากยังไม่มีบัญชี สร้างบัญชี</a>
+    </p>
+    
+    </ion-list>
+    <button ion-button full color="energy" (click)="login()">เข้าสู่ระบบ</button>
         </ion-col>
       </ion-row>
       <ion-row>

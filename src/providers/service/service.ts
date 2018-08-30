@@ -49,6 +49,8 @@ export class ServiceProvider {
   }
 
   addDetailItem(detail:Detail) {
+    console.log('22');
+    
     return this.detailListRef.push(detail);
   }
 
