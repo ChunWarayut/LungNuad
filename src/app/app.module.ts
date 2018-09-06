@@ -11,7 +11,6 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { Camera } from '@ionic-native/camera';
-import { UsersServiceProvider } from '../providers/users-service/users-service';
 
 import firebase from 'firebase';
 
@@ -46,8 +45,7 @@ firebase.initializeApp(config);
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ServiceProvider,
     ToastServiceProvider,
-    Camera,
-    UsersServiceProvider
+    Camera
   ]
 })
 export class AppModule {}

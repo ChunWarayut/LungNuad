@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController, LoadingController } from 'ionic-angular';
-import { UsersServiceProvider } from '../../providers/users-service/users-service';
+import { IonicPage, NavController, NavParams, ToastController, LoadingController, MenuController } from 'ionic-angular';
+import firebase from 'firebase';
 
 /**
  * Generated class for the HomePage page.
@@ -20,10 +20,13 @@ export class HomePage {
   password:any;
 
   constructor(public toastCtrl: ToastController, 
-    public usersService : UsersServiceProvider,
+    private menu: MenuController,
     public loadingCtrl: LoadingController,
     public navCtrl: NavController, public navParams: NavParams) {
+      this.menu.swipeEnable(false);
+
   }
+
   loginf(){
     let toast = this.toastCtrl.create({
       message: 'อีเมล์หรือรหัสผ่านไม่ถูกต้อง กรุณากรอกใหม่อีกครั้ง',
@@ -32,12 +35,14 @@ export class HomePage {
     });
     toast.present();
   }
+
   login(){
     var loader = this.loadingCtrl.create({
       content: "Please wait..."
     });
     loader.present();
-    this.usersService.loginUserService(this.email, this.password).then(authData =>{
+    firebase.auth().signInWithEmailAndPassword(this.email, this.password)
+    .then(authData =>{
       this.navCtrl.setRoot('FoodListPage')
       loader.dismiss();
     }).catch( error =>{

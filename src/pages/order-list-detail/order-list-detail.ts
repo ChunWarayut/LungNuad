@@ -38,30 +38,16 @@ export class OrderListDetailPage {
     public loadingCtrl: LoadingController,
     private detailing: ServiceProvider, 
     public alertCtrl: AlertController) 
-  {
-
-    
-
-    this.DetailList$ = this.detailing
-    .getDetailList()
-    .snapshotChanges()
-    .map(
-      Change => {
-        return Change.map(c=> ({
-          key : c.payload.key,
-          ...c.payload.val(),
-        }));
-      });
-
-
-      
+  {    
 
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FoodOrderPage');
+  
+  ionViewWillLoad() {
+    this.detail = this.navParams.get('detail');
+  }
 
-    console.log(this.arrData);
+  ionViewDidLoad() {
     let loading = this.loadingCtrl.create({
       content: 'Please wait...'
     });
@@ -72,12 +58,7 @@ export class OrderListDetailPage {
       loading.dismiss();
     }, 1400);
   }
-  /*
-  GoBack(){
-    this.navCtrl.setRoot('FoodStatusPage');
-  }
 
-*/
 
 getUpdate0(detail){
 
