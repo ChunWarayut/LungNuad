@@ -27,27 +27,27 @@
 
       <ion-item>
         <ion-label fixed>ชื่อ</ion-label>
-        <ion-input type="text" value=""></ion-input>
+        <ion-input type="text" [(ngModel)]="name" name="name" placeholder="ลุงหนวด"></ion-input>
       </ion-item>
 
       <ion-item>
           <ion-label fixed>ที่อยู่</ion-label>
-          <ion-input type="text" value=""></ion-input>
+          <ion-input type="text" [(ngModel)]="location" name="location" placeholder="25/1-2 สุรนารายณ์ ซอย 15 ต.ในเมือง อ.เมือง จ.นม."></ion-input>
         </ion-item>
 
         <ion-item>
             <ion-label fixed>เบอร์โทรศัพท์</ion-label>
-            <ion-input type="text" value=""></ion-input>
+            <ion-input type="text" [(ngModel)]="phone" name="phone" placeholder="0912345678"></ion-input>
           </ion-item>
     
       <ion-item>
         <ion-label fixed>อีเมล์</ion-label>
-        <ion-input type="text" value=""></ion-input>
+        <ion-input type="email" [(ngModel)]="email" name="email" placeholder="LungNuad@gmail.com"></ion-input>
       </ion-item>
     
       <ion-item>
         <ion-label fixed>รหัสผ่าน</ion-label>
-        <ion-input type="password"></ion-input>
+        <ion-input  type="password" [(ngModel)]="password" name="password"></ion-input>
       </ion-item>
     
       <button ion-button block color="energy" (click)="signup()">สมัครสมาชิก</button>

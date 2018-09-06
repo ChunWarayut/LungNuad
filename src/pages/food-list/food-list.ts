@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
 import { Food } from '../../module/item/item.module';
-
+import firebase from 'firebase';
 /**
  * Generated class for the FoodListPage page.
  *
@@ -37,7 +37,17 @@ export class FoodListPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FoodListPage');
-    
+    var user = firebase.auth().currentUser;
+
+    if (user != null) {
+      user.providerData.forEach(function (user) {
+        console.log("Sign-in provider: " + user.providerId);
+        console.log("  Provider-specific UID: " + user.uid);
+        console.log("  Name: " + user.displayName);
+        console.log("  Email: " + user.email);
+        console.log("  Photo URL: " + user.photoURL);
+      });
+    } 
   }
 
   doRefresh(refresher) {

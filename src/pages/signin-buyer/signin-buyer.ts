@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import firebase from 'firebase';
 /**
  * Generated class for the SigninBuyerPage page.
  *
@@ -15,7 +15,13 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SigninBuyerPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  email:any;
+  password:any;
+  name:any;
+  location:any;
+  phone:any;
+
+  constructor(public loadingCtrl: LoadingController,public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
@@ -23,7 +29,37 @@ export class SigninBuyerPage {
   }
 
   signup(){
-    //Api connections
+    const account =  {
+      name: this.name || '',
+      location: this.location || '',
+      phone: this.phone || '',
+      email: this.email,
+      password: this.password 
+    }
+    var loader = this.loadingCtrl.create({
+      content: "Please wait..."
+    });
+    loader.present();
+    firebase.auth().createUserWithEmailAndPassword(account['email'], account['password'])
+    .then(
+      newUser =>{
+
+        firebase.auth().signInWithEmailAndPassword(account['email'], account['password'])
+          .then(
+            authUser =>{
+              firebase.database().ref('users').child(authUser.uid).set(account);
+              loader.dismiss();
+        }
+      )
+    }
+    )
+    .catch(function(error) {
+      // Handle Errors here.
+      error.code;
+      error.message;
+      // ...
+      
+    });
     this.navCtrl.popToRoot();
   }
 

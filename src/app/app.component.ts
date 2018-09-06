@@ -1,6 +1,6 @@
 
 import { Component, ViewChild } from '@angular/core';
-import { Platform, Nav } from 'ionic-angular';
+import { Platform, Nav, MenuController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -16,8 +16,8 @@ export class MyApp {
   pages: Array<{title: string, component: any}>;
 
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
-  
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,    private menu: MenuController) {
+    this.menu.swipeEnable(false);
     this.pages = [
       { title: 'เลือกอาหาร', component: 'FoodListPage' },
       { title: 'อาหารที่สั่ง', component: 'CartPage' },
