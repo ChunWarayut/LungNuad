@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, LoadingController } from 'ionic-angular';
+import { UsersServiceProvider } from '../../providers/users-service/users-service';
 
 /**
  * Generated class for the HomePage page.
@@ -15,21 +16,41 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  email:any;
+  password:any;
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad HomePage');
+  constructor(public toastCtrl: ToastController, 
+    public usersService : UsersServiceProvider,
+    public loadingCtrl: LoadingController,
+    public navCtrl: NavController, public navParams: NavParams) {
   }
-
+  loginf(){
+    let toast = this.toastCtrl.create({
+      message: 'อีเมล์หรือรหัสผ่านไม่ถูกต้อง กรุณากรอกใหม่อีกครั้ง',
+      duration: 3000,
+      position: 'top'
+    });
+    toast.present();
+  }
   login(){
-    this.navCtrl.setRoot('FoodListPage');
+    var loader = this.loadingCtrl.create({
+      content: "Please wait..."
+    });
+    loader.present();
+    this.usersService.loginUserService(this.email, this.password).then(authData =>{
+      this.navCtrl.setRoot('FoodListPage')
+      loader.dismiss();
+    }).catch( error =>{
+      let toast = this.toastCtrl.create({
+        message: 'อีเมล์หรือรหัสผ่านไม่ถูกต้อง กรุณากรอกใหม่อีกครั้ง',
+        duration: 3000,
+        position: 'top'
+      });
+      toast.present();
+      this.password = "";
+    }
+    )
   }
-/**
-loginAdmin(){
- this.navCtrl.push('LoginAdminPage');
-}
-  **/
  loginAdmin(){
   this.navCtrl.push('LoginAdminPage');
  }

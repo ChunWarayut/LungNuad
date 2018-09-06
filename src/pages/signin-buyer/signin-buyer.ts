@@ -24,7 +24,7 @@ export class SigninBuyerPage {
 
   signup(){
     //Api connections
-    this.navCtrl.push('FoodListPage');
+    this.navCtrl.push('HomePage');
   }
 
 }

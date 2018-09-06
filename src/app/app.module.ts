@@ -11,6 +11,9 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { Camera } from '@ionic-native/camera';
+import { UsersServiceProvider } from '../providers/users-service/users-service';
+
+import firebase from 'firebase';
 
 const config = {
   apiKey: "AIzaSyCqLA0Yg7VnVhwRjVxzrF5CcKUQx-5t6ro",
@@ -20,6 +23,8 @@ const config = {
   storageBucket: "lungnuad-a547e.appspot.com",
   messagingSenderId: "926337943393"
 };
+firebase.initializeApp(config);
+
 
 @NgModule({
   declarations: [
@@ -41,7 +46,8 @@ const config = {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ServiceProvider,
     ToastServiceProvider,
-    Camera
+    Camera,
+    UsersServiceProvider
   ]
 })
 export class AppModule {}
