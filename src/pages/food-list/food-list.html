@@ -54,6 +54,7 @@
     <!--  -->
     <ion-grid>
      <ion-row>
+          
          <ion-col col-6   *ngFor="let food of FoodList$ | async" detail-push navPush="FoodDetailPage" [navParams]="{food: food}">
     <ion-card color="Beige"> 
       <img  src="https://firebasestorage.googleapis.com/v0/b/lungnuad-a547e.appspot.com/o/images%2F{{food.FOOD_IMG}}.jpg?alt=media&token=b934ec8f-234a-47cf-9d6a-4b5376fdb8d8">

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 import firebase from 'firebase';
 /**
  * Generated class for the SigninBuyerPage page.
@@ -21,13 +21,24 @@ export class SigninBuyerPage {
   location:any;
   phone:any;
 
-  constructor(public loadingCtrl: LoadingController,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public toastCtrl: ToastController, 
+
+    public loadingCtrl: LoadingController,public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SigninBuyerPage');
   }
 
+  signupF(){
+    let toast = this.toastCtrl.create({
+      message: 'กรุณากรอกข้อมูลให้ครบถ้วน',
+      duration: 3000,
+      position: 'top'
+    });
+    toast.present();
+  }
   signup(){
     const account =  {
       name: this.name || '',
@@ -51,6 +62,14 @@ export class SigninBuyerPage {
               loader.dismiss();
         }
       )
+      .catch(error =>{
+        let toast = this.toastCtrl.create({
+          message: 'กรุณากรอกข้อมูลให้ครบถ้วน',
+          duration: 3000,
+          position: 'top'
+        });
+        toast.present();
+      })
     }
     )
     .catch(function(error) {

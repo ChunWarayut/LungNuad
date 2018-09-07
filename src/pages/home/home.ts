@@ -19,10 +19,13 @@ export class HomePage {
   email:any;
   password:any;
 
-  constructor(public toastCtrl: ToastController, 
+  constructor(
+    public toastCtrl: ToastController, 
     private menu: MenuController,
     public loadingCtrl: LoadingController,
-    public navCtrl: NavController, public navParams: NavParams) {
+    public navCtrl: NavController, 
+    public navParams: NavParams
+    ) {
       this.menu.swipeEnable(false);
 
   }
@@ -53,6 +56,7 @@ export class HomePage {
       });
       toast.present();
       this.password = "";
+      loader.dismiss();
     }
     )
   }

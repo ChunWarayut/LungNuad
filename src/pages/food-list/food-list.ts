@@ -18,7 +18,7 @@ import firebase from 'firebase';
 })
 export class FoodListPage {
   FoodList$:Observable<Food[]>;
-
+  ususususu 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams, 
     private fooding: ServiceProvider,
@@ -38,7 +38,7 @@ export class FoodListPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad FoodListPage');
     var user = firebase.auth().currentUser;
-
+    
     if (user != null) {
       user.providerData.forEach(function (user) {
         console.log("Sign-in provider: " + user.providerId);
