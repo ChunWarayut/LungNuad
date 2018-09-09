@@ -16,8 +16,11 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding align="center">
+<p align="center">
+    <img  src="https://firebasestorage.googleapis.com/v0/b/lungnuad-a547e.appspot.com/o/Untitled-12.ico?alt=media&token=b7de86c3-bdd4-4a43-871e-e5cc5e0b36af" />
 
+</p>
 
 
             
@@ -47,7 +50,7 @@
     
       <ion-item>
         <ion-label stacked>รหัสผ่าน</ion-label>
-        <ion-input  type="password" [(ngModel)]="password" name="password"></ion-input>
+        <ion-input  type="password" [(ngModel)]="password" name="password"  placeholder="LungNuad@gmail.com"></ion-input>
       </ion-item>
     
       <button ion-button block color="energy"  *ngIf="email && password && name && phone && location" (click)="signup()">สมัครสมาชิก</button>

@@ -29,11 +29,11 @@ export interface Detail {
 
   key?:string;
 
-  DETAIL_ID:string;
+  DETAIL_ID:any;
   BUYER_NAME:string;
   DETAIL_ORDER:any;
   DETAIL_TOTAL:any;
-  DETAIL_DATE:string;
+  DETAIL_DATE:any;
   DETAIL_ADDRESS:string;
   DETAIL_STATUS:string;
 

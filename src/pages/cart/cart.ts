@@ -85,20 +85,26 @@ export class CartPage {
           text: 'ใช่',
           handler: () => {
             console.log('Agree clicked');
+              var d = new Date();
+              var curr_date = d.getDate();
+              var curr_month = d.getMonth() + 1; //Months are zero based
+              var curr_year = d.getFullYear();
+              var curr_hourse = d.getHours();
+              var curr_minutes = d.getMinutes();
+              var curr_secounds = d.getSeconds();
 
-            // Using Date() function
-            var d = Date();
-            // Converting the number value to string
-            var a = d.toString()
-            
             this.CartList$.subscribe(_data => {
               this.cartData = _data;
-              this.detail.DETAIL_ID = 'D_' + Math.floor(Date.now() / 100);
+              console.log(
+                _data
+              );
+              
+              this.detail.DETAIL_ID = 'D_' + Math.floor(Date.now());
               this.detail.DETAIL_ORDER = this.cartData;
               this.detail.DETAIL_TOTAL = this.arrData;
               this.detail.BUYER_NAME = 'วรายุทธ เทกระโทก';
               this.detail.DETAIL_ADDRESS = "25/1-2 ซอย 15 ";
-              this.detail.DETAIL_DATE = a;
+              this.detail.DETAIL_DATE = curr_date + "-" + curr_month + "-" +  curr_year + ", " + curr_hourse + ":" + curr_minutes + ":" + curr_secounds ;
               this.detail.DETAIL_STATUS = 'กำลังดำเนินการ';
 
     

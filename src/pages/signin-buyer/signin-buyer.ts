@@ -54,6 +54,10 @@ export class SigninBuyerPage {
     firebase.auth().createUserWithEmailAndPassword(account['email'], account['password'])
     .then(
       newUser =>{
+        newUser.updateProfile({
+          displayName:this.name || '',
+          photoURL:'https://firebasestorage.googleapis.com/v0/b/lungnuad-a547e.appspot.com/o/Untitled-12.ico?alt=media&token=b7de86c3-bdd4-4a43-871e-e5cc5e0b36af'        
+        })
 
         firebase.auth().signInWithEmailAndPassword(account['email'], account['password'])
           .then(
@@ -79,7 +83,7 @@ export class SigninBuyerPage {
       // ...
       
     });
-    this.navCtrl.popToRoot();
+    this.navCtrl.setRoot('HomePage');
   }
 
 }

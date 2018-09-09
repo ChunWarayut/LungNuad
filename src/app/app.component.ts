@@ -3,7 +3,6 @@ import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav, MenuController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
 @Component({
   templateUrl: 'app.html'
 })
@@ -14,7 +13,6 @@ export class MyApp {
   rootPage:string = 'HomePage';
 
   pages: Array<{title: string, component: any}>;
-
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,    private menu: MenuController) {
     this.menu.swipeEnable(false);
@@ -32,6 +30,7 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
+
   }
 
   openPage(page) {
@@ -40,5 +39,6 @@ export class MyApp {
     this.nav.setRoot(page.component);
   }
 
+  
 }
 

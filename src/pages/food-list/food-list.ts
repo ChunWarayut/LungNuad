@@ -18,11 +18,17 @@ import firebase from 'firebase';
 })
 export class FoodListPage {
   FoodList$:Observable<Food[]>;
-  ususususu 
+  
+
+  name = firebase.auth().currentUser.displayName
+  photoURL = firebase.auth().currentUser.photoURL
+
   constructor(public navCtrl: NavController, 
     public navParams: NavParams, 
     private fooding: ServiceProvider,
   ) {
+    
+    
     this.FoodList$ = this.fooding
     .getFoodList()
     .snapshotChanges()
@@ -37,8 +43,8 @@ export class FoodListPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FoodListPage');
+/* 
     var user = firebase.auth().currentUser;
-    
     if (user != null) {
       user.providerData.forEach(function (user) {
         console.log("Sign-in provider: " + user.providerId);
@@ -47,7 +53,8 @@ export class FoodListPage {
         console.log("  Email: " + user.email);
         console.log("  Photo URL: " + user.photoURL);
       });
-    } 
+    }  */
+
   }
 
   doRefresh(refresher) {
