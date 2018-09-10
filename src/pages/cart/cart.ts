@@ -46,6 +46,7 @@ export class CartPage {
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController
   ) {
+    
 
     this.fdb.list("/total/").valueChanges().subscribe(_data => {
       this.arrData = _data;
@@ -98,24 +99,24 @@ export class CartPage {
               console.log(
                 _data
               );
-              
-              this.detail.DETAIL_ID = 'D_' + Math.floor(Date.now());
-              this.detail.DETAIL_ORDER = this.cartData;
-              this.detail.DETAIL_TOTAL = this.arrData;
-              this.detail.BUYER_NAME = 'วรายุทธ เทกระโทก';
-              this.detail.DETAIL_ADDRESS = "25/1-2 ซอย 15 ";
-              this.detail.DETAIL_DATE = curr_date + "-" + curr_month + "-" +  curr_year + ", " + curr_hourse + ":" + curr_minutes + ":" + curr_secounds ;
-              this.detail.DETAIL_STATUS = 'กำลังดำเนินการ';
 
-    
+              var user = firebase.auth().currentUser;
+                        
+              firebase.database().ref('/users/' + user.uid).once('value').then(data =>{
+                this.detail.DETAIL_ID = 'D_' + Math.floor(Date.now());
+                this.detail.DETAIL_ORDER = this.cartData;
+                this.detail.DETAIL_TOTAL = this.arrData;
+                this.detail.BUYER_NAME = data.val().name;
+                this.detail.DETAIL_ADDRESS = data.val().location;
+                this.detail.DETAIL_DATE = curr_date + "-" + curr_month + "-" +  curr_year + ", " + curr_hourse + ":" + curr_minutes + ":" + curr_secounds ;
+                this.detail.DETAIL_STATUS = 'กำลังดำเนินการ';
+  
+                
               setTimeout(() => {
-                this.carting.addDetailItem(detail)                
+                firebase.database().ref("detail-list/" +user.uid).push(detail)                
               }, 2000);
-              /*
-              this.fdb.list('detail-list').push(detail).then(ref => {
-                this.navCtrl.setRoot('FoodListPage');
-              });*/
             })
+          })
 
 
             this.carting.removeCartItem();
@@ -123,7 +124,7 @@ export class CartPage {
             var cartRef0000 = firebase.database().ref("total/");
             cartRef0000.remove();
             
-            this.navCtrl.setRoot('OrderListPage');
+            this.navCtrl.setRoot('FoodStatusPage');
           }
         }
       ]

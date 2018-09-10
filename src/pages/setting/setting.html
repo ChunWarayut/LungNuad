@@ -18,55 +18,47 @@
 
 <ion-content padding>
 
-    <ion-grid>
-        <ion-row>
-    
-            <ion-col>
-    
-            </ion-col>
-    
-          <ion-col >
 
 
     <ion-list>
         <ion-item>
-          <ion-label fixed> 
+          <ion-label stacked> 
             รหัสลูกค้า :         
           </ion-label>
           <ion-label> 
-            B_1524178890       
+            {{UID}}     
           </ion-label>
         </ion-item>   
         <ion-item>
-          <ion-label fixed> 
+          <ion-label stacked> 
             ชื่อลูกค้า :         
           </ion-label>
           <ion-label> 
-            สมชาย ใจดี          
+            {{name}}
           </ion-label>
         </ion-item>
         <ion-item>
-          <ion-label fixed>           
+          <ion-label stacked>           
             ที่อยู่ : 
           </ion-label>
           <ion-label>           
-            25/1 ต.เมืองพล อ.พล จ.ขอนแก่น 40120
+              {{location}}
           </ion-label>
         </ion-item>
         <ion-item>
-          <ion-label fixed>           
+          <ion-label stacked>           
             เบอร์โทรศัพท์ :
           </ion-label>  
           <ion-label >           
-            0912345678     
+                {{phone}}
           </ion-label>  
         </ion-item>
         <ion-item>
-          <ion-label fixed> 
+          <ion-label stacked> 
             Email :
           </ion-label>
           <ion-label > 
-            somchay121224@sanook.com
+            {{email}}
           </ion-label>
         </ion-item>
   
@@ -75,13 +67,5 @@
         </button>
 
       </ion-list>
- 
-    </ion-col>
-     
-    <ion-col>
-      
-    </ion-col>
-  
-  </ion-row>
-  </ion-grid>
+
 </ion-content>
