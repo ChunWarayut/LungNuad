@@ -51,6 +51,7 @@ export class CartPage {
     this.fdb.list("/total/").valueChanges().subscribe(_data => {
       this.arrData = _data;
     });
+    
     this.CartList$ = this.carting.getCartList().snapshotChanges().map(Change => {
           return Change.map(c => ({
             key: c.payload.key,
@@ -63,6 +64,7 @@ export class CartPage {
 
 
    cartRef = firebase.database().ref("total/");
+
   GoBack() {
     
     this.cartRef.remove();
@@ -70,8 +72,40 @@ export class CartPage {
     
   }
 
-  addDetailItem(detail: Detail) {
-    let confirm = this.alertCtrl.create({
+
+
+  ionViewDidLoad() {
+   
+    const cartR = firebase.database().ref("total/");
+    cartR.remove();
+
+
+    console.log('ionViewDidLoad FoodOrderPage');    
+
+    let total = 0;
+
+    const cartRef11111 = firebase.database()
+    .ref("cart-list/");
+    cartRef11111.orderByChild("CART_PRICE")
+    .on("child_added",async function myCart (data) {
+      let add = 0;
+      add = Number( data.val().CART_PRICE );
+      total += add;
+    let cartRe = firebase.database()
+    .ref("total/");
+
+    let totjk = {
+      TOTAL_TOTAL:total
+    }
+
+   await cartRe.update(totjk);
+    });
+
+    
+  }
+  
+  async addDetailItem(detail: Detail) {
+    let confirm = await this.alertCtrl.create({
       title: "สั่งอาหาร",
       message: 'คุณต้องการสั่งใช่หรือไม่',
       buttons: [
@@ -84,83 +118,73 @@ export class CartPage {
         },
         {
           text: 'ใช่',
-          handler: () => {
+          handler: async () => {
             console.log('Agree clicked');
-              var d = new Date();
-              var curr_date = d.getDate();
-              var curr_month = d.getMonth() + 1; //Months are zero based
-              var curr_year = d.getFullYear();
-              var curr_hourse = d.getHours();
-              var curr_minutes = d.getMinutes();
-              var curr_secounds = d.getSeconds();
+              let d = new Date();
+              let curr_date = d.getDate();
+              let curr_month = d.getMonth() + 1; //Months are zero based
+              let curr_year = d.getFullYear();
+              let curr_hourse = d.getHours();
+              let curr_minutes = d.getMinutes();
+              let curr_secounds = d.getSeconds();
 
-            this.CartList$.subscribe(_data => {
+
+             await this.CartList$
+              .subscribe(async _data => {
               this.cartData = _data;
               console.log(
                 _data
               );
 
-              var user = firebase.auth().currentUser;
+              let user = firebase.auth().currentUser;
                         
-              firebase.database().ref('/users/' + user.uid).once('value').then(data =>{
+             await firebase.database().ref('/users/' + user.uid).once('value').then(async data =>{
+               let list = {
+                 DETAIL_ID:'D_' + Math.floor(Date.now()),
+                 DETAIL_ORDER:this.cartData,
+                 DETAIL_TOTAL:this.arrData,
+                 BUYER_NAME:data.val().name,
+                 DETAIL_ADDRESS:data.val().location,
+                 DETAIL_DATE:curr_date + "-" + curr_month + "-" +  curr_year + ", " + curr_hourse + ":" + curr_minutes + ":" + curr_secounds,
+                 DETAIL_STATUS:'กำลังดำเนินการ'
+               }
+               await firebase.database().ref("detail-list/" + user.uid).push(list)
+               
+               var ref = firebase.database().ref('/detail-list/' + user.uid);
+                ref.orderByKey().limitToLast(1).on("child_added", function(snapshot) {
+                  console.log(snapshot.key);
+
+                  firebase.database().ref('/detail-list/' + user.uid + '/'+snapshot.key).remove();
+
+                });
+                this.navCtrl.setRoot('FoodStatusPage');   
+
+               /* 
                 this.detail.DETAIL_ID = 'D_' + Math.floor(Date.now());
-                this.detail.DETAIL_ORDER = this.cartData;
-                this.detail.DETAIL_TOTAL = this.arrData;
+                this.detail.DETAIL_ORDER = await this.cartData;
+                this.detail.DETAIL_TOTAL = await this.arrData;
                 this.detail.BUYER_NAME = data.val().name;
                 this.detail.DETAIL_ADDRESS = data.val().location;
                 this.detail.DETAIL_DATE = curr_date + "-" + curr_month + "-" +  curr_year + ", " + curr_hourse + ":" + curr_minutes + ":" + curr_secounds ;
                 this.detail.DETAIL_STATUS = 'กำลังดำเนินการ';
+                */
   
-                
-              setTimeout(() => {
-                firebase.database().ref("detail-list/" +user.uid).push(detail)                
-              }, 2000);
-            })
+                /* 
+              */
+            })/* 
+            let deleteref = firebase.database().ref("detail-list/" + user.uid).orderByKey().limitToLast(1) */
+                this.carting.removeCartItem();
+
+                    
+                let cartRef0000 = firebase.database().ref("total/");
+                cartRef0000.remove();
+          
           })
 
-
-            this.carting.removeCartItem();
-                    
-            var cartRef0000 = firebase.database().ref("total/");
-            cartRef0000.remove();
-            
-            this.navCtrl.setRoot('FoodStatusPage');
           }
         }
       ]
     });
     confirm.present();
   }
-
-
-  ionViewDidLoad() {
-   
-    var cartR = firebase.database().ref("total/");
-    cartR.remove();
-
-
-    console.log('ionViewDidLoad FoodOrderPage');    
-
-    var total = 0;
-
-    var cartRef11111 = firebase.database()
-    .ref("cart-list/");
-    cartRef11111.orderByChild("CART_PRICE")
-    .on("child_added", function myCart (data) {
-      var add = 0;
-      add = Number( data.val().CART_PRICE );
-      total += add;
-    var cartRe = firebase.database()
-    .ref("total/");
-
-    var totjk = {
-      TOTAL_TOTAL:total
-    }
-
-    cartRe.update(totjk);
-    });
-
-    
-  }
-  
 }

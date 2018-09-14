@@ -2,7 +2,6 @@ import { ServiceProvider } from './../../providers/service/service';
 import { Food, Cart } from './../../module/item/item.module';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
-import { ToastServiceProvider } from '../../providers/toast-service/toast-service';
 
 /**
  * Generated class for the FoodDetailPage page.
@@ -33,7 +32,6 @@ export class FoodDetailPage {
     public navCtrl: NavController, 
     public navParams: NavParams, 
     private carting: ServiceProvider, 
-    private toast: ToastServiceProvider, 
     
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController
@@ -99,8 +97,7 @@ export class FoodDetailPage {
 
 
     this.carting.addCartItem(cart).then(ref =>{
-      this.toast.show(`${cart.CART_NAME} เลือกอาหารสำเร็จ`)
-      this.navCtrl.setRoot('CartPage',  {key:ref.key});
+      this.navCtrl.setRoot('CartPage');
     });
     
         }

@@ -1,8 +1,9 @@
+import { AngularFireDatabase } from 'angularfire2/database';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Detail } from './../../module/item/item.module';
 import { Observable } from 'rxjs/Observable';
-import { ServiceProvider } from '../../providers/service/service';
+import firebase from 'firebase';
 
 /**
  * Generated class for the FoodOrderPage page.
@@ -22,12 +23,14 @@ export class FoodOrderPage {
 
 
   detail:Detail
+  usid = firebase.auth().currentUser.uid;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,  private detailing: ServiceProvider) {
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,  
+    db: AngularFireDatabase) {
 
 
-    this.DetailList$ = this.detailing
-    .getDetailList()
+    this.DetailList$ = db.list('detail-list/'+this.usid)
     .snapshotChanges()
     .map(
       Change => {

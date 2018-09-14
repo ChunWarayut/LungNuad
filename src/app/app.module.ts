@@ -15,12 +15,12 @@ import { Camera } from '@ionic-native/camera';
 import firebase from 'firebase';
 
 const config = {
-  apiKey: "AIzaSyBwT3783rn5Iep4iVsaMOfI3maLf8VvrXw",
-    authDomain: "projectfinal-5eb87.firebaseapp.com",
-    databaseURL: "https://projectfinal-5eb87.firebaseio.com",
-    projectId: "projectfinal-5eb87",
-    storageBucket: "",
-    messagingSenderId: "310405845589"
+  apiKey: "AIzaSyCqLA0Yg7VnVhwRjVxzrF5CcKUQx-5t6ro",
+  authDomain: "lungnuad-a547e.firebaseapp.com",
+  databaseURL: "https://lungnuad-a547e.firebaseio.com",
+  projectId: "lungnuad-a547e",
+  storageBucket: "lungnuad-a547e.appspot.com",
+  messagingSenderId: "926337943393"
 };
 firebase.initializeApp(config);
 
