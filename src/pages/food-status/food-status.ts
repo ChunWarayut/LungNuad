@@ -40,6 +40,11 @@ export class FoodStatusPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad FoodStatusPage');
   }
+  backBtn(){
+    let user = firebase.auth().currentUser;
+    firebase.database().ref("cart-list/").remove()
+    this.navCtrl.setRoot('FoodListPage')
+  }
 
 }
  

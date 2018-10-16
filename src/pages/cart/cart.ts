@@ -149,14 +149,14 @@ export class CartPage {
                  DETAIL_STATUS:'กำลังดำเนินการ'
                }
                await firebase.database().ref("detail-list/" + user.uid).push(list)
-               
+               /* 
                var ref = firebase.database().ref('/detail-list/' + user.uid);
                 ref.orderByKey().limitToLast(1).on("child_added", function(snapshot) {
                   console.log(snapshot.key);
 
                   firebase.database().ref('/detail-list/' + user.uid + '/'+snapshot.key).remove();
 
-                });
+                }); */
                 this.navCtrl.setRoot('FoodStatusPage');   
 
                /* 
@@ -173,11 +173,11 @@ export class CartPage {
               */
             })/* 
             let deleteref = firebase.database().ref("detail-list/" + user.uid).orderByKey().limitToLast(1) */
-                this.carting.removeCartItem();
+                //this.carting.removeCartItem();
 
                     
-                let cartRef0000 = firebase.database().ref("total/");
-                cartRef0000.remove();
+                //let cartRef0000 = firebase.database().ref("total/");
+               // cartRef0000.remove();
           
           })
 

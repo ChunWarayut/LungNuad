@@ -8,15 +8,17 @@
 
     <ion-navbar color="boa">
         <ion-title>foodStatus</ion-title>
-        <button ion-button menuToggle>
+        <!-- <button ion-button menuToggle>
             <ion-icon name="menu"></ion-icon>
-          </button>
+          </button> -->
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
+
+    <button ion-button block (click)="backBtn()">ย้อนกลับ</button>
 
   <ion-card *ngFor="let detail of DetailList$ | async">
     <ion-grid>
