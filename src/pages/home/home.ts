@@ -59,15 +59,15 @@ export class HomePage {
       loader.dismiss();
     }
     )
-  }/* 
+  }
   ionViewWillLoad(){
     firebase.auth().signOut()
-  } */
+  }
   ionViewDidLoad(){
    
   }
  loginAdmin(){
-  this.navCtrl.push('LoginAdminPage');
+  this.navCtrl.push('HomeAdminPage');
  }
  
   signup(){

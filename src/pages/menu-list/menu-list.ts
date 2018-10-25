@@ -3,6 +3,7 @@ import { Food } from './../../module/item/item.module';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Observable } from 'rxjs/Observable';
+import firebase from 'firebase';
 
 /**
  * Generated class for the MenuListPage page.
@@ -19,6 +20,10 @@ import { Observable } from 'rxjs/Observable';
 export class MenuListPage {
 
   FoodList$:Observable<Food[]>;
+
+  
+  email = "5840505134@5840505134.com";
+  password = "5840505134"
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private Fooding: ServiceProvider) {
 
@@ -37,6 +42,8 @@ export class MenuListPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MenuListPage');
+    firebase.auth().signInWithEmailAndPassword(this.email, this.password);
+
   }
 
   doRefresh(refresher) {

@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Detail } from './../../module/item/item.module';
 import { Observable } from 'rxjs/Observable';
 import { ServiceProvider } from '../../providers/service/service';
+import firebase from 'firebase';
 
 /**
  * Generated class for the OrderListPage page.
@@ -21,6 +22,10 @@ export class OrderListPage {
 
   DetailList$:Observable<Detail[]>;
 
+
+  
+  email = "5840505134@5840505134.com";
+  password = "5840505134"
 
   detail:Detail
 
@@ -40,6 +45,8 @@ export class OrderListPage {
     }
   ionViewDidLoad() {
     console.log('ionViewDidLoad FoodStatusPage');
+    firebase.auth().signInWithEmailAndPassword(this.email, this.password);
+
   }
 
 }

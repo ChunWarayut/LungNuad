@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { Type } from '../../module/item/item.module';
 import { ServiceProvider } from '../../providers/service/service';
 import { ToastServiceProvider } from '../../providers/toast-service/toast-service';
+import firebase from 'firebase';
 
 /**
  * Generated class for the MenuTypeAddPage page.
@@ -20,16 +21,21 @@ export class MenuTypeAddPage {
 
   type: Type = {
 
+  
     FOOD_TYPE_ID  : undefined,
     FOOD_TYPE_NAME  : undefined
 
   };
 
+  email = "5840505134@5840505134.com";
+  password = "5840505134"
   constructor(public navCtrl: NavController, public navParams: NavParams, private typeing:ServiceProvider, private toast:ToastServiceProvider, public alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MenuTypeAddPage');
+    firebase.auth().signInWithEmailAndPassword(this.email, this.password);
+
   }
 /*
   addTypeItem(type:Type){

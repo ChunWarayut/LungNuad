@@ -13,7 +13,7 @@ export class ServiceProvider {
   
   private foodListRef = this.db.list<Food>('food-list');
   private typeListRef = this.db.list<Type>('type-list');
-  private detailListRef = this.db.list<Detail>('detail-list');
+  private detailListRef = this.db.list<Detail>('detail', ref => ref.orderByChild('status'));
   private buyerlListRef = this.db.list<Buyer>('buyer-list');
   private cartListRef = this.db.list<Cart>(`cart-list`)
 

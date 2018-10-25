@@ -23,14 +23,16 @@
       <ion-grid>
         <ion-row>
           <ion-col col-8>
-            <ion-label > 
-              ชื่อลูกค้า : {{detail.BUYER_NAME}} 
+            <ion-label position="stacked"> 
+              ชื่อลูกค้า : 
             </ion-label>
+            <ion-input readonly value="{{detail.name}}"></ion-input>
           </ion-col>
           <ion-col col-4>
-            <ion-label > 
-                {{detail.DETAIL_STATUS}} 
+            <ion-label positon="stacked"> 
+                สถานะการสั่งอาหาร
             </ion-label>
+            <ion-input readonly value="{{detail.status}}"></ion-input>
           </ion-col>
         </ion-row>
       </ion-grid>

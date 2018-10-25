@@ -43,7 +43,7 @@
           <ion-col center text-center>
               <br/>
 
-            <button ion-button full color="danger" *ngIf="email && password " (click)="loginAdmin()">เฉพาะผู้ดูแล</button>
+            <button ion-button full color="danger" *ngIf="email == admin && password == admin " (click)="loginAdmin()">เฉพาะผู้ดูแล</button>
           </ion-col>
         </ion-row>
     </ion-grid>

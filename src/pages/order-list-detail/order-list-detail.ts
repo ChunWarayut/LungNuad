@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import { ServiceProvider } from '../../providers/service/service';
 
 
-
+import * as firebase from 'firebase';
 /**
  * Generated class for the OrderListDetailPage page.
  *
@@ -62,23 +62,27 @@ export class OrderListDetailPage {
 
 getUpdate0(detail){
 
-    detail.DETAIL_STATUS = 'กำลังจัดเตรียมอาหาร'
+    detail.status = 'กำลังจัดเตรียมอาหาร'
 
   this.detailing.editDetailItem(detail)
+  firebase.database().ref('users-detail/' + detail.nameID +'/' + detail.detailID).update(detail)
 }
 
 getUpdate1(detail){
 
-  detail.DETAIL_STATUS = 'อยู่ในระหว่างการจัดส่ง'
+  detail.status = 'กำลังจัดส่ง'
 
   this.detailing.editDetailItem(detail)
+  firebase.database().ref('users-detail/' + detail.nameID +'/' + detail.detailID).update(detail)
+  
 }
 
 getUpdate2(detail){
   
-  detail.DETAIL_STATUS = 'ส่งสำเร็จ'
+  detail.status = 'ส่งสำเร็จ'
 
   this.detailing.editDetailItem(detail)
+  firebase.database().ref('users-detail/' + detail.nameID +'/' + detail.detailID).update(detail)
 
 }
 }
