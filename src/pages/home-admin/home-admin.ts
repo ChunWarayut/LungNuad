@@ -28,7 +28,7 @@ export class HomeAdminPage {
     this.pages = [
       { title: 'ประเภทอาหาร', component: 'MenuTypePage' },
       { title: 'เมนูอาหาร', component: 'MenuListPage' },
-      { title: 'order ลูกค้า', component: 'OrderListPage' }
+      { title: 'รายการสั่งซื้อของลูกค้า', component: 'OrderListPage' }
     ];
 
 
