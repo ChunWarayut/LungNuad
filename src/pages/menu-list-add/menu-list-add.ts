@@ -28,8 +28,8 @@ export class MenuListAddPage {
     FOOD_NAME:undefined,
     FOOD_PRICE:undefined,
     FOOD_IMG:undefined,
-    FOOD_TYPE_NAME:undefined
-
+    FOOD_TYPE_NAME:undefined,
+    amount:0
   };
 
   type: Type = {
@@ -112,6 +112,7 @@ addFoodItem(food:Food){
           food.FOOD_IMG = this.food.FOOD_ID;
       
           food.FOOD_TYPE_NAME = this.type.FOOD_TYPE_NAME;
+
           this.fooding.addFoodItem(food).then(ref =>{
       
             this.toast.show(`${food.FOOD_NAME}  เพิ่มสำเร็จ`)

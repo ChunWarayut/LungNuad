@@ -6,7 +6,7 @@ export interface Food {
   FOOD_PRICE: number;
   FOOD_IMG : any;
   FOOD_TYPE_NAME: string;
-
+  amount: number;
 }
 export interface Total {
   key?:string;

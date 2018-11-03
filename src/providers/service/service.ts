@@ -13,7 +13,9 @@ export class ServiceProvider {
   
   private foodListRef = this.db.list<Food>('food-list');
   private typeListRef = this.db.list<Type>('type-list');
-  private detailListRef = this.db.list<Detail>('detail', ref => ref.orderByChild('status'));
+  private detailListRef = this.db.list<Detail>('detail', ref => ref.orderByChild('statusNum'));
+  private detailListRef2 = this.db.list<Detail>('detail', ref => ref.orderByChild('status').equalTo('กำลังดำเนินการ'));
+
   private buyerlListRef = this.db.list<Buyer>('buyer-list');
   private cartListRef = this.db.list<Cart>(`cart-list`)
 
@@ -30,6 +32,10 @@ export class ServiceProvider {
 
   getDetailList() {
     return this.detailListRef;
+  }
+  
+  getDetailList2() {
+    return this.detailListRef2;
   }
 
   getBuyerList() {

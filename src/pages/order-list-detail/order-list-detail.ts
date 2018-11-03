@@ -62,27 +62,37 @@ export class OrderListDetailPage {
 
 getUpdate0(detail){
 
-    detail.status = 'กำลังจัดเตรียมอาหาร'
+    detail.status = 'จัดเตรียมอาหาร'
+    detail.color = 'secondary'
+    detail.statusNum = 1
 
   this.detailing.editDetailItem(detail)
   firebase.database().ref('users-detail/' + detail.nameID +'/' + detail.detailID).update(detail)
+  this.navCtrl.setRoot('HomeAdminPage');
 }
 
 getUpdate1(detail){
 
   detail.status = 'กำลังจัดส่ง'
+  detail.color = 'primary'
+  detail.statusNum = 2
+
 
   this.detailing.editDetailItem(detail)
   firebase.database().ref('users-detail/' + detail.nameID +'/' + detail.detailID).update(detail)
+  this.navCtrl.setRoot('HomeAdminPage');
   
 }
 
 getUpdate2(detail){
   
   detail.status = 'ส่งสำเร็จ'
+  detail.color = 'light'
+  detail.statusNum = 3
 
   this.detailing.editDetailItem(detail)
   firebase.database().ref('users-detail/' + detail.nameID +'/' + detail.detailID).update(detail)
+  this.navCtrl.setRoot('HomeAdminPage');
 
 }
 }

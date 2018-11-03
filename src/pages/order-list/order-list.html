@@ -19,21 +19,31 @@
 <ion-content>
 
 
-    <ion-card *ngFor="let detail of DetailList$ | async" detail-push navPush="OrderListDetailPage" [navParams]="{detail: detail}">
+    <ion-card  color={{detail.color}} *ngFor="let detail of DetailList$ | async" detail-push navPush="OrderListDetailPage" [navParams]="{detail: detail}">
       <ion-grid>
         <ion-row>
-          <ion-col col-8>
+          <ion-item >
             <ion-label position="stacked"> 
               ชื่อลูกค้า : 
             </ion-label>
             <ion-input readonly value="{{detail.name}}"></ion-input>
-          </ion-col>
-          <ion-col col-4>
+          </ion-item>
+        </ion-row>
+        <ion-row>
+          <ion-item>
             <ion-label positon="stacked"> 
-                สถานะการสั่งอาหาร
+                สถานะ
             </ion-label>
             <ion-input readonly value="{{detail.status}}"></ion-input>
-          </ion-col>
+          </ion-item>
+        </ion-row>
+        <ion-row>
+          <ion-item>
+            <ion-label positon="stacked"> 
+                วันที่
+            </ion-label>
+            <ion-input readonly value="{{detail.date}}"></ion-input>
+          </ion-item>
         </ion-row>
       </ion-grid>
     </ion-card>

@@ -2,6 +2,10 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, Nav } from 'ionic-angular';
 import firebase from 'firebase';
+import { Detail } from '../../module/item/item.module';
+import { Observable } from 'rxjs/Observable';
+import { ServiceProvider } from '../../providers/service/service';
+
 /**
  * Generated class for the HomeAdminPage page.
  *
@@ -21,15 +25,33 @@ export class HomeAdminPage {
 
   pages: Array<{title: string, component: any}>;
 
+  DetailList$:Observable<Detail[]>;
+
+  detail:Detail
+  
+  
   email = "5840505134@5840505134.com";
   password = "5840505134"
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private detailing: ServiceProvider) {
 
     this.pages = [
       { title: 'ประเภทอาหาร', component: 'MenuTypePage' },
       { title: 'เมนูอาหาร', component: 'MenuListPage' },
       { title: 'รายการสั่งซื้อของลูกค้า', component: 'OrderListPage' }
     ];
+
+    
+
+    this.DetailList$ = this.detailing
+    .getDetailList2()
+    .snapshotChanges()
+    .map(
+      Change => {
+        return Change.map(c=> ({
+          key : c.payload.key,
+          ...c.payload.val(),
+        }));
+      });
 
 
   }
