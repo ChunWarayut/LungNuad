@@ -21,35 +21,35 @@
 
     <ion-grid>
         <ion-row>
-    
+
             <ion-col>
-    
+
             </ion-col>
-    
+
           <ion-col col-auto>
 
 
 <!--
   <ion-item>
-    <ion-label>รหัสอาหาร</ion-label> 
+    <ion-label>รหัสอาหาร</ion-label>
     <ion-input [(ngModel)]="food.FOOD_ID"></ion-input>
   </ion-item>
 -->
   <ion-item>
-    <ion-label>ชื่ออาหาร</ion-label> 
-    <ion-input [(ngModel)]="food.FOOD_NAME"></ion-input>
+    <ion-label>ชื่ออาหาร</ion-label>
+    <ion-input name='name'  type="text" [(ngModel)]="food.FOOD_NAME"></ion-input>
   </ion-item>
-  
+
   <ion-item>
-    <ion-label>ประเภทอาหาร</ion-label> 
+    <ion-label>ประเภทอาหาร</ion-label>
     <ion-select [(ngModel)]="type.FOOD_TYPE_NAME">
       <ion-option *ngFor="let type of TypeList$ | async" [value]="type.FOOD_TYPE_NAME">{{type.FOOD_TYPE_NAME}}</ion-option>
     </ion-select>
   </ion-item>
-  
+
   <ion-item>
     <ion-label>ราคา</ion-label>
-    <ion-input [(ngModel)]="food.FOOD_PRICE"></ion-input>
+    <ion-input name='price' type="number" min="0"  [(ngModel)]="food.FOOD_PRICE"></ion-input>
   </ion-item>
   <!--
   <ion-item>
@@ -65,11 +65,11 @@
       <button ion-button block full round large (click)=addFoodItem(food) *ngIf="captureDataUrl">Add</button>
     </div>
 
-     
+
   </ion-col>
-     
+
   <ion-col>
-    
+
   </ion-col>
 
 </ion-row>
