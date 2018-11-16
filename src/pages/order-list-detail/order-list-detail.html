@@ -109,24 +109,15 @@
             </ion-label>
   
             <ion-label>           
-               {{detail.status}}          
+                        
               </ion-label>
     
-            </ion-item>
+              <ion-input readonly  name="email" id='email' [(ngModel)]="detail.status" >
 
-            <ion-grid>
-              <ion-row>
-                <ion-col>
-                    <button ion-button full color="Beige" (click)=getUpdate0(detail)>กำลังจัดเตรียมอาหาร</button>
-                </ion-col>
-                <ion-col>
-                    <button ion-button full color="PaleGoldenrod" (click)=getUpdate1(detail)>กำลังจัดส่ง</button>
-                </ion-col>
-                <ion-col>
-                    <button ion-button full color="energy" (click)=getUpdate2(detail)>ส่งสำเร็จ</button>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
+              </ion-input>
+            </ion-item>
+                    <button ion-button full color="Beige"  *ngIf="email == 'ส่งสำเร็จ'"   (click)=getUpdate0(detail)>ปรับสถานะ</button>
+    
 
           </ion-list>
   

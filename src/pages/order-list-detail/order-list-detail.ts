@@ -62,13 +62,39 @@ export class OrderListDetailPage {
 
 getUpdate0(detail){
 
+  if(detail.status == 'กำลังดำเนินการ'){
+
     detail.status = 'จัดเตรียมอาหาร'
     detail.color = 'secondary'
     detail.statusNum = 1
+    detail.statusNumC =1
 
   this.detailing.editDetailItem(detail)
   firebase.database().ref('users-detail/' + detail.nameID +'/' + detail.detailID).update(detail)
   this.navCtrl.setRoot('HomeAdminPage');
+  }else if (detail.status == 'จัดเตรียมอาหาร'){
+    
+  detail.status = 'กำลังจัดส่ง'
+  detail.color = 'primary'
+  detail.statusNum = 2
+  detail.statusNumC =1
+
+
+  this.detailing.editDetailItem(detail)
+  firebase.database().ref('users-detail/' + detail.nameID +'/' + detail.detailID).update(detail)
+  this.navCtrl.setRoot('HomeAdminPage');
+  }else if(detail.status == 'กำลังจัดส่ง'){
+    
+  detail.status = 'ส่งสำเร็จ'
+  detail.color = 'light'
+  detail.statusNum = 3
+  detail.statusNumC =0
+
+  this.detailing.editDetailItem(detail)
+  firebase.database().ref('users-detail/' + detail.nameID +'/' + detail.detailID).update(detail)
+  this.navCtrl.setRoot('HomeAdminPage');
+
+  }
 }
 
 getUpdate1(detail){
@@ -76,6 +102,7 @@ getUpdate1(detail){
   detail.status = 'กำลังจัดส่ง'
   detail.color = 'primary'
   detail.statusNum = 2
+  detail.statusNumC =1
 
 
   this.detailing.editDetailItem(detail)
@@ -89,6 +116,7 @@ getUpdate2(detail){
   detail.status = 'ส่งสำเร็จ'
   detail.color = 'light'
   detail.statusNum = 3
+  detail.statusNumC =0
 
   this.detailing.editDetailItem(detail)
   firebase.database().ref('users-detail/' + detail.nameID +'/' + detail.detailID).update(detail)

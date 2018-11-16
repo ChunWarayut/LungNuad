@@ -15,6 +15,11 @@ export class ServiceProvider {
   private typeListRef = this.db.list<Type>('type-list');
   private detailListRef = this.db.list<Detail>('detail', ref => ref.orderByChild('statusNum'));
   private detailListRef2 = this.db.list<Detail>('detail', ref => ref.orderByChild('status').equalTo('กำลังดำเนินการ'));
+  private detailListRef3 = this.db.list<Detail>('detail', ref => ref.orderByChild('status').equalTo('ส่งสำเร็จ'));
+  private detailListRef4 = this.db.list<Detail>('detail', ref => ref.orderByChild('statusNumC').equalTo(1));
+
+
+
 
   private buyerlListRef = this.db.list<Buyer>('buyer-list');
   private cartListRef = this.db.list<Cart>(`cart-list`)
@@ -37,7 +42,12 @@ export class ServiceProvider {
   getDetailList2() {
     return this.detailListRef2;
   }
-
+  getDetailList3() {
+    return this.detailListRef3;
+  }
+  getDetailList4() {
+    return this.detailListRef4;
+  }
   getBuyerList() {
     return this.buyerlListRef;
   }

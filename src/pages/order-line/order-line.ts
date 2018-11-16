@@ -7,7 +7,7 @@ import { ServiceProvider } from '../../providers/service/service';
 import firebase from 'firebase';
 
 /**
- * Generated class for the OrderListPage page.
+ * Generated class for the OrderLinePage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -15,10 +15,10 @@ import firebase from 'firebase';
 
 @IonicPage()
 @Component({
-  selector: 'page-order-list',
-  templateUrl: 'order-list.html',
+  selector: 'page-order-line',
+  templateUrl: 'order-line.html',
 })
-export class OrderListPage {
+export class OrderLinePage {
 
   DetailList$:Observable<Detail[]>;
 
@@ -33,7 +33,7 @@ export class OrderListPage {
 
 
     this.DetailList$ = this.detailing
-    .getDetailList4()
+    .getDetailList3()
     .snapshotChanges()
     .map(
       Change => {
@@ -48,5 +48,4 @@ export class OrderListPage {
     firebase.auth().signInWithEmailAndPassword(this.email, this.password);
 
   }
-
 }

@@ -28,8 +28,8 @@ export class HomeAdminPage {
   DetailList$:Observable<Detail[]>;
 
   detail:Detail
-
-
+  
+  
   email = "5840505134@5840505134.com";
   password = "5840505134"
   constructor(public navCtrl: NavController, public navParams: NavParams, private detailing: ServiceProvider) {
@@ -37,10 +37,10 @@ export class HomeAdminPage {
     this.pages = [
       { title: 'ประเภทอาหาร', component: 'MenuTypePage' },
       { title: 'เมนูอาหาร', component: 'MenuListPage' },
-      { title: 'รายการสั่งซื้อ', component: 'OrderListPage' }
+      { title: 'รายการสั่งซื้อ', component: 'OrderPage' }
     ];
 
-
+    
 
     this.DetailList$ = this.detailing
     .getDetailList2()

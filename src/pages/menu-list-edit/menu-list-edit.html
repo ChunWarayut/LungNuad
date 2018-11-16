@@ -29,7 +29,7 @@
 
     <ion-card color="primary"> 
       <ion-item>
-          <img  src="https://firebasestorage.googleapis.com/v0/b/lungnuad-a547e.appspot.com/o/images%2F{{food?.FOOD_IMG}}.jpg?alt=media&token=b934ec8f-234a-47cf-9d6a-4b5376fdb8d8">
+          <img src="https://firebasestorage.googleapis.com/v0/b/test-98b25.appspot.com/o/images%2F{{food.FOOD_IMG}}.jpg?alt=media&token=f20a56f1-6ecd-4244-bec2-5344d235038b">
       </ion-item>
       <ion-item >
         <ion-label>เมนู</ion-label>
@@ -38,14 +38,14 @@
 
       <ion-item>
           <ion-label>ประเภทอาหาร</ion-label> 
-          <ion-select [(ngModel)]="type.FOOD_TYPE_NAME">
+          <ion-select [(ngModel)]="type.FOOD_TYPE_NAME"  value="type.FOOD_TYPE_NAME">
             <ion-option *ngFor="let type of TypeList$ | async" [value]="type.FOOD_TYPE_NAME">{{type.FOOD_TYPE_NAME}}</ion-option>
           </ion-select>
         </ion-item>
 
       <ion-item >
         <ion-label>ราคา</ion-label>
-        <ion-input [(ngModel)]="food.FOOD_PRICE"></ion-input>
+        <ion-input  type="number"[(ngModel)]="food.FOOD_PRICE"></ion-input>
       </ion-item>
 
 
