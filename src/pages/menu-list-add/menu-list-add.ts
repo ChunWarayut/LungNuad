@@ -21,6 +21,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class MenuListAddPage {
 
+   newPostKey = firebase.database().ref().child('posts').push().key;
 
   food: Food = {
     
@@ -91,54 +92,35 @@ export class MenuListAddPage {
   }
 */
 
-addFoodItem(food:Food){
-  let confirm = this.alertCtrl.create({
-    title: this.food.FOOD_NAME,
-    message: 'คุณต้องการเพิ่ม  '+this.food.FOOD_NAME+' ใช่หรือไม่',
-    buttons: [
-      {
-        text: 'ไม่ใช่',
-        handler: () => {
-          console.log('Disagree clicked');
-          this.navCtrl.setRoot('HomeAdminPage')
+addFoodItem(){
+         const fo = {
+          FOOD_ID : this.newPostKey,
+          FOOD_IMG : this.newPostKey,
+          FOOD_NAME: this.food.FOOD_NAME,
+          FOOD_PRICE : this.food.FOOD_PRICE,
+           FOOD_TYPE_NAME : this.type.FOOD_TYPE_NAME,
+           amount : 0,
+           key:this.newPostKey
         }
-      },
-      {
-        text: 'ใช่',
-        handler: () => {
-          console.log('Agree clicked');
+          let uplate ={}
+          uplate ['food-list/' + this.newPostKey] = fo
 
-          food.FOOD_ID = 'F_' + Math.floor(Date.now() / 100);
-          food.FOOD_IMG = this.food.FOOD_ID;
-      
-          food.FOOD_TYPE_NAME = this.type.FOOD_TYPE_NAME;
+          firebase.database().ref().update(uplate).then(ref =>{
 
-          food.amount = 0;
-          this.fooding.addFoodItem(food).then(ref =>{
-      
-            this.toast.show(`${food.FOOD_NAME}  เพิ่มสำเร็จ`)
-      
-            this.navCtrl.setRoot('HomeAdminPage', {key:ref.key});
+            this.navCtrl.setRoot('HomeAdminPage');
           });
       
           this.upload();
-      
-      
-        }
-      }
-    ]
-  });
-  confirm.present();
 }
 
   selectPhoto(): void {
     const cameraOptions: CameraOptions = {
-      quality: 10,
       destinationType: this.camera.DestinationType.DATA_URL,
       // In this app, dynamically set the picture source, Camera or photo gallery
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
-      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      targetHeight: 300
     };
     this.camera.getPicture(cameraOptions).then((imageData) => {
       // imageData is either a base64 encoded string or a file URI
@@ -151,7 +133,7 @@ addFoodItem(food:Food){
   upload() {
     let storageRef = firebase.storage().ref();
 
-    const filename = this.food.FOOD_IMG;
+    const filename =  this.newPostKey;
 
     // Create a reference to 'images/todays-date.jpg'
     const imageRef = storageRef.child(`images/${filename}.jpg`);
@@ -165,7 +147,6 @@ addFoodItem(food:Food){
   showSuccesfulUploadAlert() {
     let alert = this.alertCtrl.create({
       title: 'อัพโหลดสำเร็จ',
-      subTitle: 'Picture is uploaded to Firebase',
       buttons: ['OK']
     });
     alert.present();
