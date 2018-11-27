@@ -114,9 +114,13 @@
     
               <ion-input readonly  name="email" id='email' [(ngModel)]="detail.status" >
 
+                
               </ion-input>
             </ion-item>
-                    <button ion-button full color="Beige"  *ngIf="email == 'ส่งสำเร็จ'"   (click)=getUpdate0(detail)>ปรับสถานะ</button>
+
+
+
+                    <button ion-button full color="Beige"   (click)=getUpdate0(detail)>ปรับสถานะ</button>
     
 
           </ion-list>

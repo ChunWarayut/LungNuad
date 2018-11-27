@@ -43,6 +43,7 @@ export class OrderListPage {
         }));
       });
     }
+    
   ionViewDidLoad() {
     console.log('ionViewDidLoad FoodStatusPage');
     firebase.auth().signInWithEmailAndPassword(this.email, this.password);

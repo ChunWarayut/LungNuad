@@ -1,4 +1,4 @@
-import { ToastServiceProvider } from './../../providers/toast-service/toast-service';
+
 import { ServiceProvider } from './../../providers/service/service';
 import { Food, Type } from './../../module/item/item.module';
 import { Component } from '@angular/core';
@@ -48,7 +48,9 @@ export class MenuListAddPage {
   TypeList$:Observable<Type[]>;
 
   
-  constructor(public navCtrl: NavController, public navParams: NavParams, private fooding:ServiceProvider, private toast:ToastServiceProvider, alertCtrl: AlertController, private camera: Camera,private typeing: ServiceProvider) {
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams, 
+    alertCtrl: AlertController, private camera: Camera,private typeing: ServiceProvider) {
 
     this.alertCtrl = alertCtrl;
 
