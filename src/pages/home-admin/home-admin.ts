@@ -5,7 +5,7 @@ import firebase from 'firebase';
 import { Detail } from '../../module/item/item.module';
 import { Observable } from 'rxjs/Observable';
 import { ServiceProvider } from '../../providers/service/service';
-import { setTimeout } from 'timers';
+
 
 /**
  * Generated class for the HomeAdminPage page.
@@ -43,7 +43,6 @@ export class HomeAdminPage {
 
     
     setTimeout(() => {
-      
     this.DetailList$ = this.detailing
     .getDetailList2()
     .snapshotChanges()
@@ -54,7 +53,7 @@ export class HomeAdminPage {
           ...c.payload.val(),
         }));
       });
-    }, 3000);
+    }, 1000);
 
 
   }

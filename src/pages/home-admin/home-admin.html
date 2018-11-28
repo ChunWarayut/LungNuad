@@ -16,7 +16,7 @@
 </ion-header>
 
 
-  <ion-content>
+  <ion-content >
 
 <br />
 
@@ -55,7 +55,23 @@
             <ion-input readonly  value="{{detail.date}}"></ion-input>
           </ion-item>
         </ion-row>
+        
+    <ion-list >
+        <button ion-button full color={{detail.color}} >
+          อาหารที่สั่ง
+        </button>        
+        <ion-item *ngFor="let items of detail.food" >
+          <ion-label>
+              {{items.food}}               
+          </ion-label>
+          <ion-label> 
+              จำนวน  {{items.amount}} กล่อง               
+          </ion-label>
+        </ion-item>
+        </ion-list>
+        
       </ion-grid>
     </ion-card>
+    
 </p>
   </ion-content>
