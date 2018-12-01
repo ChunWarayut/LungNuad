@@ -36,19 +36,6 @@
   
             </ion-item>
   
-            <ion-item>
-            
-            <ion-label align='center'> 
-             อาหารที่สั่ง
-            </ion-label>
-  
-            </ion-item>
-            <ion-item *ngFor="let row of  detail.food">
-            
-{{row.food}} &nbsp;&nbsp; จำนวน &nbsp;&nbsp; {{row.amount}}
-&nbsp;&nbsp; รายการ
-       
-            </ion-item>
   
             <ion-item>
   
@@ -70,7 +57,7 @@
             </ion-label>
     
             <ion-label> 
-               {{detail.total}} &nbsp; &nbsp; บาท
+               {{detail.total  | number}} &nbsp; &nbsp; บาท
               </ion-label>
       
             </ion-item>
@@ -101,10 +88,28 @@
   
             </ion-item>
   
-              <ion-item>
+
+            
+            
+            <ion-item color="boa">
+            
+                <ion-label align='center' > 
+                 อาหารที่สั่ง
+                </ion-label>
+      
+                </ion-item>
+                <ion-item *ngFor="let row of  detail.food">
+                
+    {{row.food}} &nbsp;&nbsp; จำนวน &nbsp;&nbsp; {{row.amount}}
+    &nbsp;&nbsp; รายการ
+           
+                </ion-item>
+
+
+              <ion-item color="boa">
   
   
-            <ion-label fixed>           
+            <ion-label fixed >           
               สถานะ :        
             </ion-label>
   

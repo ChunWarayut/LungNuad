@@ -42,7 +42,7 @@
   
   <ion-item>
     <ion-label>ประเภทอาหาร</ion-label> 
-    <ion-select [(ngModel)]="type.FOOD_TYPE_NAME">
+    <ion-select [(ngModel)]="type.FOOD_TYPE_NAME" value="type.FOOD_TYPE_NAME">
       <ion-option *ngFor="let type of TypeList$ | async" [value]="type.FOOD_TYPE_NAME">{{type.FOOD_TYPE_NAME}}</ion-option>
     </ion-select>
   </ion-item>
@@ -58,14 +58,14 @@
   </ion-item>
   -->
   <div style="display:flex; flex-direction:column;justify-content:center">
-      <button ion-button color="secondary" type="button" full round large (click)="selectPhoto()">
-        <ion-icon name="md-image"></ion-icon>
-      </button>
-      <img [src]="captureDataUrl"  *ngIf="captureDataUrl"/>
-      <button ion-button block full round large (click)=addFoodItem(food) *ngIf="captureDataUrl">Add</button>
-    </div>
+    <button ion-button color="secondary" type="button" full round large (click)="selectPhoto()">
+    <ion-icon name="md-image"></ion-icon>
+    </button>
+    <img [src]="captureDataUrl"  *ngIf="captureDataUrl"/>
+    <button ion-button block full round large (click)=addFoodItem(food) *ngIf="captureDataUrl">Add</button>
+  </div>
 
-     
+
   </ion-col>
      
   <ion-col>

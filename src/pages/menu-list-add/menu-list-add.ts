@@ -122,7 +122,8 @@ addFoodItem(){
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-      targetHeight: 300
+      targetHeight: 300,
+      targetWidth: 300
     };
     this.camera.getPicture(cameraOptions).then((imageData) => {
       // imageData is either a base64 encoded string or a file URI

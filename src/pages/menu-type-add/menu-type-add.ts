@@ -27,6 +27,7 @@ export class MenuTypeAddPage {
 
   };
 
+  TID;
   email = "5840505134@5840505134.com";
   password = "5840505134"
   constructor(public navCtrl: NavController, public navParams: NavParams, private typeing:ServiceProvider, private toast:ToastServiceProvider, public alertCtrl: AlertController) {
@@ -35,6 +36,10 @@ export class MenuTypeAddPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad MenuTypeAddPage');
     firebase.auth().signInWithEmailAndPassword(this.email, this.password);
+    firebase.database().ref('type-list').limitToLast(1).once('child_added').then(data => {
+      console.log(data.val().FOOD_TYPE_ID);
+      this.TID = data.val().FOOD_TYPE_ID;
+    })
 
   }
 /*
@@ -46,7 +51,7 @@ export class MenuTypeAddPage {
 
       this.toast.show(`${type.FOOD_TYPE_NAME}  เพิ่มสำเร็จ`)
 
-      this.navCtrl.setRoot('HomeAdminPage', {key:ref.key});
+      this.navCtrl.setRoot('MenuTypePage', {key:ref.key});
     });
   }
   */
@@ -60,21 +65,20 @@ export class MenuTypeAddPage {
           text: 'ไม่ใช่',
           handler: () => {
             console.log('Disagree clicked');
-            this.navCtrl.setRoot('HomeAdminPage')
+            this.navCtrl.setRoot('MenuTypePage')
           }
         },
         {
           text: 'ใช่',
           handler: () => {
             console.log('Agree clicked');
-
-            this.type.FOOD_TYPE_ID = "T_" + Math.floor(Date.now() / 100);
+            this.type.FOOD_TYPE_ID = this.TID + 1
 
             this.typeing.addTypeItem(type).then(ref =>{
         
               this.toast.show(`${type.FOOD_TYPE_NAME}  เพิ่มสำเร็จ`)
         
-              this.navCtrl.setRoot('HomeAdminPage', {key:ref.key});
+              this.navCtrl.setRoot('MenuTypePage', {key:ref.key});
             });          }
         }
       ]

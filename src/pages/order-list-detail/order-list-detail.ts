@@ -45,6 +45,8 @@ export class OrderListDetailPage {
   
   ionViewWillLoad() {
     this.detail = this.navParams.get('detail');
+    console.log(this.detail);
+    
   }
 
   ionViewDidLoad() {

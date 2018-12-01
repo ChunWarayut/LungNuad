@@ -20,7 +20,7 @@ export interface Type {
 
   key?:string;
 
-  FOOD_TYPE_ID: string;
+  FOOD_TYPE_ID: number;
   FOOD_TYPE_NAME: string;
 
 }

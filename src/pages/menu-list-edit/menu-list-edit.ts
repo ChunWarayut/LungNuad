@@ -90,32 +90,12 @@ export class MenuListEditPage {
 */
 
 save(food) {
-  let confirm = this.alertCtrl.create({
-    title: this.food.FOOD_NAME,
-    message: 'คุณต้องการแก้ไข  '+this.food.FOOD_NAME+' ใช่หรือไม่',
-    buttons: [
-      {
-        text: 'ไม่ใช่',
-        handler: () => {
-          console.log('Disagree clicked');
-          this.navCtrl.setRoot('HomeAdminPage')
-        }
-      },
-      {
-        text: 'ใช่',
-        handler: () => {
-          console.log('Agree clicked');
-          food.FOOD_TYPE_NAME = this.type.FOOD_TYPE_NAME;
+          food.FOOD_TYPE_NAME = food.FOOD_TYPE_NAME;
       
           this.fooding.editFoodItem(food).then(() =>{
             this.toast.show(`${food.FOOD_NAME} save!`)
-            this.navCtrl.setRoot('HomeAdminPage');});
+            this.navCtrl.setRoot('MenuListPage');});
     
-        }
-      }
-    ]
-  });
-  confirm.present();
 }
 
 removeItem(food){
@@ -147,42 +127,22 @@ removeItem(food){
 
 
 saveDataImg(food){
-  let confirm = this.alertCtrl.create({
-    title: this.food.FOOD_NAME,
-    message: 'คุณต้องการแก้ไข  '+this.food.FOOD_NAME+' ใช่หรือไม่',
-    buttons: [
-      {
-        text: 'ไม่ใช่',
-        handler: () => {
-          console.log('Disagree clicked');
-          this.navCtrl.setRoot('HomeAdminPage')
-        }
-      },
-      {
-        text: 'ใช่',
-        handler: () => {
-          console.log('Agree clicked');
-          
-
-
   food.FOOD_IMG = 'F_' + Math.floor(Date.now() / 100);
-  food.FOOD_TYPE_NAME = this.type.FOOD_TYPE_NAME;
+  
+  food.FOOD_TYPE_NAME = food.FOOD_TYPE_NAME;
+      
+  this.fooding.editFoodItem(food).then(() =>{
+    this.toast.show(`${food.FOOD_NAME} save!`)
+    this.navCtrl.setRoot('MenuListPage');});
+ /*  food.FOOD_TYPE_NAME = food.FOOD_TYPE_NAME;
 
   this.fooding.editFoodItem(food).then(() =>{
 
 
 
     this.toast.show(`${food.FOOD_NAME} save!`)
-    this.navCtrl.setRoot('HomeAdminPage');});
+    this.navCtrl.setRoot('HomeAdminPage');}); */
     this.upload();
-
-
-    
-        }
-      }
-    ]
-  });
-  confirm.present();
 }
 
 /*
