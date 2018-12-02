@@ -27,7 +27,7 @@ export class MenuListAddPage {
     
     FOOD_ID:undefined,
     FOOD_NAME:undefined,
-    FOOD_PRICE:undefined,
+    FOOD_PRICE:35,
     FOOD_IMG:undefined,
     FOOD_TYPE_NAME:undefined,
     amount:undefined
@@ -109,7 +109,7 @@ addFoodItem(){
 
           firebase.database().ref().update(uplate).then(ref =>{
 
-            this.navCtrl.setRoot('HomeAdminPage');
+            this.navCtrl.setRoot('MenulistPage');
           });
       
           this.upload();

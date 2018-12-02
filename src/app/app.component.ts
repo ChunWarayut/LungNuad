@@ -17,11 +17,9 @@ export class MyApp {
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,    private menu: MenuController) {
     this.menu.swipeEnable(false);
     this.pages = [
-      { title: 'เลือกอาหาร', component: 'FoodListPage' },
-      { title: 'อาหารที่สั่ง', component: 'CartPage' },
-      { title: 'สถานะอาหารที่สั่ง', component: 'FoodStatusPage' },
-      { title: 'ตั้งค่า', component: 'SettingPage' },
-      { title: 'ออกจากระบบ', component: 'HomePage' }
+      { title: 'ประเภทอาหาร', component: 'MenuTypePage' },
+      { title: 'เมนูอาหาร', component: 'MenuListPage' },
+      { title: 'รายการสั่งซื้อ', component: 'OrderPage' }
     ];
 
     platform.ready().then(() => {

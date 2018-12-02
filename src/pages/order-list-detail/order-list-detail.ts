@@ -73,7 +73,7 @@ getUpdate0(detail){
 
   this.detailing.editDetailItem(detail)
   firebase.database().ref('users-detail/' + detail.nameID +'/' + detail.detailID).update(detail)
-  this.navCtrl.setRoot('HomeAdminPage');
+  this.navCtrl.setRoot('OrderListPage');
   }else if (detail.status == 'จัดเตรียมอาหาร'){
     
   detail.status = 'กำลังจัดส่ง'
@@ -84,7 +84,7 @@ getUpdate0(detail){
 
   this.detailing.editDetailItem(detail)
   firebase.database().ref('users-detail/' + detail.nameID +'/' + detail.detailID).update(detail)
-  this.navCtrl.setRoot('HomeAdminPage');
+  this.navCtrl.setRoot('OrderListPage');
   }else if(detail.status == 'กำลังจัดส่ง'){
     
   detail.status = 'ส่งสำเร็จ'
@@ -94,7 +94,7 @@ getUpdate0(detail){
 
   this.detailing.editDetailItem(detail)
   firebase.database().ref('users-detail/' + detail.nameID +'/' + detail.detailID).update(detail)
-  this.navCtrl.setRoot('HomeAdminPage');
+  this.navCtrl.setRoot('OrderListPage');
 
   }
 }
@@ -109,7 +109,7 @@ getUpdate1(detail){
 
   this.detailing.editDetailItem(detail)
   firebase.database().ref('users-detail/' + detail.nameID +'/' + detail.detailID).update(detail)
-  this.navCtrl.setRoot('HomeAdminPage');
+  this.navCtrl.setRoot('OrderListPage');
   
 }
 
@@ -122,7 +122,7 @@ getUpdate2(detail){
 
   this.detailing.editDetailItem(detail)
   firebase.database().ref('users-detail/' + detail.nameID +'/' + detail.detailID).update(detail)
-  this.navCtrl.setRoot('HomeAdminPage');
+  this.navCtrl.setRoot('OrderLinePage');
 
 }
 }
