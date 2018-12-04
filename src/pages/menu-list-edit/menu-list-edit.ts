@@ -90,11 +90,19 @@ export class MenuListEditPage {
 */
 
 save(food) {
-          food.FOOD_TYPE_NAME = food.FOOD_TYPE_NAME;
+  if ( food.FOOD_PRICE >= 0 ) {
+
+    food.FOOD_TYPE_NAME = food.FOOD_TYPE_NAME;
       
-          this.fooding.editFoodItem(food).then(() =>{
-            this.toast.show(`${food.FOOD_NAME} save!`)
-            this.navCtrl.setRoot('MenuListPage');});
+    this.fooding.editFoodItem(food).then(() =>{
+      this.toast.show(`${food.FOOD_NAME} save!`)
+      this.navCtrl.setRoot('MenuListPage');
+    });
+  }else {
+    this.toast.show(`กรุณาใส่ให้ถูกต้อง`)
+    this.navCtrl.setRoot('MenuListPage');
+
+  }
     
 }
 

@@ -6,6 +6,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import firebase from 'firebase';
 import { Observable } from 'rxjs/Observable';
+import { ToastServiceProvider } from '../../providers/toast-service/toast-service';
 
 /**
  * Generated class for the MenuListAddPage page.
@@ -50,6 +51,7 @@ export class MenuListAddPage {
   
   constructor(public navCtrl: NavController, 
     public navParams: NavParams, 
+    public tost : ToastServiceProvider,
     alertCtrl: AlertController, private camera: Camera,private typeing: ServiceProvider) {
 
     this.alertCtrl = alertCtrl;
@@ -95,6 +97,11 @@ export class MenuListAddPage {
 */
 
 addFoodItem(){
+  if ( this.food.FOOD_PRICE >= 0 &&  this.food.FOOD_PRICE <= 3000) {
+
+    this.food.FOOD_TYPE_NAME = this.food.FOOD_TYPE_NAME;
+      
+  
          const fo = {
           FOOD_ID : this.newPostKey,
           FOOD_IMG : this.newPostKey,
@@ -113,6 +120,9 @@ addFoodItem(){
           });
       
           this.upload();
+        }else {
+          this.tost.show(`กรุณาใส่ให้ถูกต้อง`)
+        }
 }
 
   selectPhoto(): void {
