@@ -1,6 +1,6 @@
 # LungNuad
 
-install nome_module
+install node_module
 -> npm i
 
 run Lungnuad APP
